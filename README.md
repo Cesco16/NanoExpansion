@@ -6,7 +6,12 @@ NanoExpansion is a python software for the extraction and characterization of Sh
 
 1. Download the repository
 
-2. Create and activate the conda environment 
+```bash
+git clone https://github.com/Cesco16/NanoExpansion.git
+cd NanoExpansion
+```
+
+3. Create and activate the conda environment 
 
 ```bash
 conda env create -f requirements.yaml
@@ -103,6 +108,6 @@ title = {NanoExpansion: a tool for the characterization of Repeat Expansion Patt
 year = {2024},
 publisher = {GitHub},
 journal = {GitHub repository},
-howpublished = {\url{https://github.com/Cesco16/NanoExpansion/edit/main/README.md)}
+howpublished = {\url{https://github.com/Cesco16/NanoExpansion)}
 }
 ```
