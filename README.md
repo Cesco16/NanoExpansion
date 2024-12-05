@@ -4,9 +4,9 @@ Tool for extraction and characterization of Short Tandem Repeats (STRs) data fro
 
 ## How to use NanoExpansion
 
-*1. Download the repository
+* 1. Download the repository
 
-*2. Create and activate the conda environment 
+* 2. Create and activate the conda environment 
 
 conda env create -f requirements.yaml
 conda activate nanoexpansion
