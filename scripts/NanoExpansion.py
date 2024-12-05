@@ -8,9 +8,9 @@ import argparse
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
-from bokeh.models import BoxZoomTool, ColumnDataSource, HoverTool
-from bokeh.models import PanTool, Range1d, ResetTool, WheelZoomTool
-from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
+#from bokeh.models import BoxZoomTool, ColumnDataSource, HoverTool
+#from bokeh.models import PanTool, Range1d, ResetTool, WheelZoomTool
+#from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
 
 from utils import bed_ru_merge, extract_sequences, create_plot_input_files, extract_interruption_sequences, create_plot_interruption_files, split_interrupt_reads
 
