@@ -72,6 +72,7 @@ and also the mutated reads. Here an example of an expanded read, that shows a TT
 
 Finally, NanoExpansion returns the complete characterization of repeat patterns in all the available reads:
 
+```
 1145b1e2-58bb-433c-afa1-939a27d713f3 :  (CAG)8
 fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CAG)12
 15234493-05c1-45e8-a844-6a8f88846125 :  (CAG)12
@@ -83,3 +84,4 @@ fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CAG)12
 503ccf68-7c1c-4350-a7cf-83d1ae02b101 :  (CAG)12
 8ca91fb6-e90c-4fde-828d-4d9df868ae6a :  (CAG)12
 fa9331e7-441a-4d13-bace-b6b2c5e11a40 :  (CAG)69(CGGCGG)(CAG)35(CGGCGGCGG)(CAG)22(CAA)118(CGA)(CAA)31(CGA)(CAA)123(CAG)118(CGGGCGG)(CAG)198
+```
