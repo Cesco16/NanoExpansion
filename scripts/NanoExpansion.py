@@ -4,6 +4,7 @@ import pysam
 import re
 import json
 import os
+import argparse
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
@@ -13,10 +14,28 @@ from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
 
 from utils import bed_ru_merge, extract_sequences, create_plot_input_files, extract_interruption_sequences, create_plot_interruption_files, split_interrupt_reads
 
+
+parser = argparse.ArgumentParser(description='missing_data',formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--sample')
+parser.add_argument('--repeat', default='CAG')
+parser.add_argument('--interruption', default='CAA')
+parser.add_argument('--path')
+parser.add_argument('--ins1', default=3)
+parser.add_argument('--ins2', default=1)
+args = parser.parse_args()
+
+sample = args.sample
+repeat_motif = args.repeat
+interrupt_motif = args.interruption
+path = args.path
+insertion_threshold = args.ins1
+ins_thresh = args.ins2
+
 ## Global variables
 sample = 'vac06122023'#'native9411'#'native13204'#'native10498'
 repeat_motif = 'CAG' #'TAAAA'#'CAG'
 interrupt_motif = 'CAA' #'TGGAA'#'GAG'# 'GAG'
+
 rep_length = len(repeat_motif)
 int_length = len(interrupt_motif)
 
@@ -90,7 +109,7 @@ for r in read_ids:
 
 ## Remove very small insertions (<=3)
 
-insertion_threshold = 3
+#insertion_threshold = 3
 
 for k in np.arange(0, len(STR),1):
     removes = []
@@ -169,8 +188,8 @@ split_interrupt_reads(path + sample + "/df_interrupt.csv")
 read_ids = plot_file['read_id'].unique()
 INTR = []
 for r in read_ids:#[0:3]:
-    if os.path.exists("/home/PERSONALE/francesco.casadei20/GridIon/"+sample+f"/{r}_interrupt.csv"): 
-        data_ = pd.read_csv("/home/PERSONALE/francesco.casadei20/GridIon/"+sample+f"/{r}_interrupt.csv")
+    if os.path.exists(path + sample + f"/{r}_interrupt.csv"): 
+        data_ = pd.read_csv(path + sample + f"/{r}_interrupt.csv")
     else:
         data_ = pd.DataFrame()
     strs = []
@@ -237,7 +256,7 @@ for r in read_ids:#[0:3]:
 
 ## Removes very small insertions (<=3)
 
-ins_thresh = 1
+#ins_thresh = 1
 
 for f in np.arange(0, len(INTR),1):
     for k in np.arange(0, len(INTR[f]),1):
