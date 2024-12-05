@@ -22,7 +22,7 @@ conda env create -f requirements.yaml
 conda activate nanoexpansion
 ```
 
-3. Index .bam STR file
+3. Index .bam STR file and keep only reads with STR of interest
 
 ```bash
 samtools view -b -h -o native9411_str_regions.bam -L ../native13204/bed_filter.bed native9411_sort.bam
