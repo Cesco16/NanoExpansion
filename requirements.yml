@@ -1,0 +1,15 @@
+name: nanoexpansion
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - stranger
+  - tabix
+  - vcflib
+  - samtools
+  - snpsift
+  - pysam
+  - matplotlib
+  - pandas
+  - numpy
+  - scikit-learn
