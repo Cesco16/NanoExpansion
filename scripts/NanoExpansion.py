@@ -53,7 +53,7 @@ merged = bed_ru_merge(merged, path + 'wf_str_repeats.bed')
 ## Extract sequences information as a json file
 str_seq_json = extract_sequences(path + sample + '/' + sample + '_str_reads.bam', merged)
 ## Extract relevant information for plot
-str_identifier = create_plot_input_files(str_seq_json)
+str_identifier = create_plot_input_files(str_seq_json, path)
 
 ## Create a list with all the STR fragments
 ## Import the created plot .csv file
@@ -181,7 +181,7 @@ str_sequence = df_STR[df_STR['type']=='Interruption'].iloc[0]['sequence']
 
 interrupt_json = extract_interruption_sequences(df_STR, motif=interrupt_motif)
 
-create_plot_interruption_files(interrupt_json)
+create_plot_interruption_files(interrupt_json, path)
 split_interrupt_reads(path + sample + "/df_interrupt.csv")
 
 ## Create a list of lists with interruptions fragments
