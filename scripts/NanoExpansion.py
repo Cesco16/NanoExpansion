@@ -182,7 +182,7 @@ str_sequence = df_STR[df_STR['type']=='Interruption'].iloc[0]['sequence']
 interrupt_json = extract_interruption_sequences(df_STR, motif=interrupt_motif)
 
 create_plot_interruption_files(interrupt_json, path)
-split_interrupt_reads(path + sample + "/df_interrupt.csv")
+split_interrupt_reads(path + sample + "/df_interrupt.csv", path)
 
 ## Create a list of lists with interruptions fragments
 read_ids = plot_file['read_id'].unique()
