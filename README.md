@@ -1,4 +1,4 @@
-# NanoExpansion
+# NanoExpansion: a tool for the characterization of Repeat Expansion Pattern in Nanopore sequencing samples
 
 Tool for extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
 
@@ -97,5 +97,12 @@ You are free to use, modify, and distribute this software under the terms of the
 If you use this project in your research or work, please cite the GitHub repository:
 
 ```
-@misc{YourProjectName, author = {Francesco Casadei}, title = {NanoExpansion}, year = {2024}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\url{https://github.com/Cesco16/NanoExpansion/edit/main/README.md)}}
+@misc{NanoExpansion
+author = {Francesco Casadei},
+title = {NanoExpansion: a tool for the characterization of Repeat Expansion Pattern in Nanopore sequencing samples},
+year = {2024},
+publisher = {GitHub},
+journal = {GitHub repository},
+howpublished = {\url{https://github.com/Cesco16/NanoExpansion/edit/main/README.md)}
+}
 ```
