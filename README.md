@@ -11,8 +11,11 @@ Tool for extraction and characterization of Short Tandem Repeats (STRs) data fro
 ```bash
 conda env create -f requirements.yaml
 
+```
+
 ```bash
 conda activate nanoexpansion
+```
 
 ## Example of usage
 
