@@ -95,4 +95,7 @@ You are free to use, modify, and distribute this software under the terms of the
 ## Citation
 
 If you use this project in your research or work, please cite the GitHub repository:
-@misc{YourProjectName, author = {Your Name or Organization}, title = {Your Project Title}, year = {2024}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\url{https://github.com/YourUsername/YourRepoName}}, }
+
+```
+@misc{YourProjectName, author = {Francesco Casadei}, title = {NanoExpansion}, year = {2024}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\url{https://github.com/Cesco16/NanoExpansion/edit/main/README.md)}}
+```
