@@ -442,7 +442,7 @@ def create_plot_interruption_files(str_seq_json, savepath):
         #print(DF)
     DF.to_csv(savepath+sample+"/df_interrupt.csv", index=False)
 
-def split_interrupt_reads(int_df_path):
+def split_interrupt_reads(int_df_path, savepath):
     int_df = pd.read_csv(int_df_path)
     read_ids = int_df['read_id'].unique()
     
@@ -450,7 +450,7 @@ def split_interrupt_reads(int_df_path):
         #print(read)
         df = int_df[int_df['read_id']==read]
         #print(df)
-        df.to_csv("/home/PERSONALE/francesco.casadei20/GridIon/"+sample+f"/{read}_interrupt.csv", index=False)
+        df.to_csv(savepath + sample + f"/{read}_interrupt.csv", index=False)
 
   def complementary_reverse(dna):
     rev = dna[::-1]
