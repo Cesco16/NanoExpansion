@@ -2,6 +2,8 @@
 
 Tool for extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
 
-![Descrizione alternativa](images/STR_eg.PNG)
+## Example of usage
 
-![Descrizione alternativa](images/str_eg2.PNG)
+![Example of STR with interruption pattern in gene DMPK](images/STR_eg.PNG)
+
+![Example of wild-type allele in gene DMPK](images/str_eg2.PNG)
