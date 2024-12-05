@@ -62,7 +62,8 @@ N.B. Please, do not change the filenames created in steps 3-5.
 ## Example of usage
 
 Here an example of NanoExpansion applied to a patient affected by Mytonic Dystrophy type 1 (DM1), which is characterized by an expansion of the CTG triplet in gene *DMPK*.
-Thanks to NanoExpansion, it is possible to characterize the wild-type allele:
+Thanks to NanoExpansion, it is possible to characterize the wild-type allele.
+The numbers in the plots represents the number of nucleotides in each region. The number of repeats is obtained dividing those numbers by the length of the repeat motif (in this case, 3).
 
 ![Example of wild-type allele in gene DMPK](images/str_eg2.PNG)
 
@@ -85,3 +86,13 @@ fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CAG)12
 8ca91fb6-e90c-4fde-828d-4d9df868ae6a :  (CAG)12
 fa9331e7-441a-4d13-bace-b6b2c5e11a40 :  (CAG)69(CGGCGG)(CAG)35(CGGCGGCGG)(CAG)22(CAA)118(CGA)(CAA)31(CGA)(CAA)123(CAG)118(CGGGCGG)(CAG)198
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software under the terms of the license.
+
+## Citation
+
+If you use this project in your research or work, please cite the GitHub repository:
+@misc{YourProjectName, author = {Your Name or Organization}, title = {Your Project Title}, year = {2024}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\url{https://github.com/YourUsername/YourRepoName}}, }
