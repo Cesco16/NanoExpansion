@@ -53,6 +53,8 @@ SnpSift extractFields native9411_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NO
 ```
 6. Execute NanoExpansion
 
+NanoExpansion.py --sample 9411native --repeat CAG --interruption CAA --path /path/to/file/GridIon
+
 ## Example of usage
 
 ![Example of STR with interruption pattern in gene DMPK](images/STR_eg.PNG)
