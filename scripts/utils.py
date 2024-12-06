@@ -464,9 +464,9 @@ def split_interrupt_reads(int_df_path, savepath):
     rev=rev.replace('g','G')
     return rev
 
-def draw_dna_gene(sections_lengths, section_colors, motifs = ['CAG','GAG','Other'], total_length=None, figsize=(10, 3), ids=None):
+def draw_dna_gene(sections_lengths, section_colors, motifs = ['CAG','GAG','Other'], total_length=None, figsize=(10, 3), ids=None, savepath):
         #fig, ax = plt.subplots()
-    
+        reg = str_identifier.split('_')[1]
     # Definisci i colori per le diverse sezioni
     #section_colors = ['blue', 'orange', 'green', 'red']
     #fig, ax = plt.subplots()
@@ -497,9 +497,9 @@ def draw_dna_gene(sections_lengths, section_colors, motifs = ['CAG','GAG','Other
         #ax.text(x = current_position, y = 0, s = str(length))
     # Nascondi assi
         ax.set_xlim(0, total_length)
-        ax.set_title(f'{str_identifier} expansion')
+        ax.set_title(f'Expansion in {reg} ({ids})')
         ax.axis('off')
     # Mostra il grafico
-        #plt.savefig('/home/PERSONALE/francesco.casadei20/GridIon/'+sample+'/'+ids+f'_{str_identifier}.png')
+        plt.savefig(savepath + sample + '/' + ids + f'_{str_identifier}.png')
         plt.show()
 
