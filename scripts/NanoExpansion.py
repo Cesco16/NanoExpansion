@@ -333,7 +333,7 @@ for j in np.arange(0, len(complete_STR), 1):
         else:
             section_colors.append('yellow')
 
-    draw_dna_gene(gene_sections_lengths, section_colors, motifs=[repeat_motif, interrupt_motif, 'Other'], ids=read_ids[j]) #total_length=CSTR['Length'].cumsum()[0]
+    draw_dna_gene(gene_sections_lengths, section_colors, motifs=[repeat_motif, interrupt_motif, 'Other'], ids=read_ids[j], path) #total_length=CSTR['Length'].cumsum()[0]
 
 ## Extract repeats information for each read
 
@@ -344,10 +344,10 @@ for k in np.arange(0, len(complete_STR),1):
     for i in np.arange(0, len(CSTR), 1):
         if CSTR.iloc[i]['Type'] != 'Other':
             l = str(int(round(CSTR.iloc[i]['Length']/rep_length,0)))
-            cstr += '('+ CSTR.iloc[i]['Motif'] + r'){}'.format(l)
+            cstr += '('+ complementary_reverse(CSTR.iloc[i]['Motif']) + r'){}'.format(l)
         else:
             l = str(int(round(CSTR.iloc[i]['Length'],0)))
-            cstr += '('+ CSTR.iloc[i]['Motif'] + ')'# + r'){}'.format(l)
+            cstr += '('+ complementary_reverse(CSTR.iloc[i]['Motif']) + ')'# + r'){}'.format(l)
     print(read_ids[k], ': ', cstr)
     stt = str(read_ids[k]) + ': ' + str(cstr) + '\n'
     text_file.write(stt)
