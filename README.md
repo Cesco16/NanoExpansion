@@ -99,7 +99,7 @@ You are free to use, modify, and distribute this software under the terms of the
 
 ## Citation
 
-If you use this project in your research or work, please cite the GitHub repository:
+If you use NanoExpansion in your research or work, please cite the GitHub repository:
 
 ```
 @misc{NanoExpansion
