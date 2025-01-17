@@ -11,7 +11,7 @@ git clone https://github.com/Cesco16/NanoExpansion.git
 cd NanoExpansion
 ```
 
-3. Create and activate the conda environment 
+2. Create and activate the conda environment 
 
 ```bash
 conda env create -f requirements.yaml
