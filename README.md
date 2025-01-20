@@ -34,7 +34,7 @@ samtools index native9411_str_regions.bam
 tail -n +3 native9411_straglr.tsv | cut -f 6 > reads_to_filter.txt
 ```
 ```bash
-samtools view --write-index -N reads_to_filter.txt -o native9411_str_reads.bam
+samtools view --write-index -N reads_to_filter.txt -o native9411_str_reads.bam native9411_str_regions.bam
 ```
 
 4. Annotate .vcf using Stranger
