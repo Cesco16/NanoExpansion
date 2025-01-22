@@ -7,9 +7,9 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
-from bokeh.models import BoxZoomTool, ColumnDataSource, HoverTool
-from bokeh.models import PanTool, Range1d, ResetTool, WheelZoomTool
-from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
+#from bokeh.models import BoxZoomTool, ColumnDataSource, HoverTool
+#from bokeh.models import PanTool, Range1d, ResetTool, WheelZoomTool
+#from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
 
 def bed_ru_merge(merged_tsv, repeats_bed):
     """Merge RU's from STR repeats BED into straglr/stranger merged TSV."""
@@ -235,7 +235,7 @@ def create_plot_input_files(str_seq_json, savepath):
         df.to_csv(savepath+ sample + f"/{str_identifier}_str-content.csv", index=False)
         return str_identifier
 
-  def extract_interruption_sequences(str_dataset, motif):
+def extract_interruption_sequences(str_dataset, motif):
     """Extract interruption sequences and related info from STR dataset create JSON."""
     str_seq_dict = {}
 
@@ -452,7 +452,7 @@ def split_interrupt_reads(int_df_path, savepath):
         #print(df)
         df.to_csv(savepath + sample + f"/{read}_interrupt.csv", index=False)
 
-  def complementary_reverse(dna):
+def complementary_reverse(dna):
     rev = dna[::-1]
     rev=rev.replace('A','t')
     rev=rev.replace('T','a')
@@ -464,7 +464,7 @@ def split_interrupt_reads(int_df_path, savepath):
     rev=rev.replace('g','G')
     return rev
 
-def draw_dna_gene(sections_lengths, section_colors, motifs = ['CAG','GAG','Other'], total_length=None, figsize=(10, 3), ids=None, savepath):
+def draw_dna_gene(sections_lengths, section_colors, savepath, motifs = ['CAG','GAG','Other'], total_length=None, figsize=(10, 3), ids=None):
         #fig, ax = plt.subplots()
         reg = str_identifier.split('_')[1]
     # Definisci i colori per le diverse sezioni
