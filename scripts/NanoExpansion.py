@@ -12,7 +12,7 @@ from matplotlib.patches import Patch
 #from bokeh.models import PanTool, Range1d, ResetTool, WheelZoomTool
 #from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
 
-from utils import bed_ru_merge, extract_sequences, create_plot_input_files, extract_interruption_sequences, create_plot_interruption_files, split_interrupt_reads, draw_dna_gene
+from utils import bed_ru_merge, extract_sequences, create_plot_input_files, extract_interruption_sequences, create_plot_interruption_files, split_interrupt_reads, draw_dna_gene, complementary_reverse
 
 
 parser = argparse.ArgumentParser(description='missing_data',formatter_class=argparse.ArgumentDefaultsHelpFormatter)
