@@ -51,9 +51,9 @@ merged = pd.merge(pd_straglr, pd_stranger, left_on='start', right_on='POS')
 ## Merging BED RU info
 merged = bed_ru_merge(merged, path + 'wf_str_repeats.bed')
 ## Extract sequences information as a json file
-str_seq_json = extract_sequences(path + sample + '/' + sample + '_str_reads.bam', merged)
+str_seq_json = extract_sequences(path + sample + '/' + sample + '_str_reads.bam', merged, repeat_motif)
 ## Extract relevant information for plot
-str_identifier = create_plot_input_files(str_seq_json, path)
+str_identifier = create_plot_input_files(str_seq_json, path, sample)
 
 ## Create a list with all the STR fragments
 ## Import the created plot .csv file
