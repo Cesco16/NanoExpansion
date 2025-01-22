@@ -39,25 +39,28 @@ ins_thresh = args.ins2
 rep_length = len(repeat_motif)
 int_length = len(interrupt_motif)
 
+path = '/data/re-basecalled/'
++ sample + '/nanoexpansion/'
+
 #path = "/home/PERSONALE/francesco.casadei20/GridIon/" #path where bam and vcf files are saved
 
 ## Import straglr tsv file
-pd_straglr = pd.read_csv(path + sample + '/' + sample +'-straglr.tsv', sep="\t", header=1)
+pd_straglr = pd.read_csv(path + sample + '/nanoexpansion/' + sample +'-straglr.tsv', sep="\t", header=1)
 ## Import stranger annotated file
-pd_stranger = pd.read_csv(path + sample + '/' + sample + '_rep_plot.tsv', sep="\t", header=0)
+pd_stranger = pd.read_csv(path + sample + '/nanoexpansion/native' + sample + '_rep_plot.tsv', sep="\t", header=0)
 ## Merge straglr and stranger files
 merged = pd.merge(pd_straglr, pd_stranger, left_on='start', right_on='POS')
 
 ## Merging BED RU info
 merged = bed_ru_merge(merged, path + 'wf_str_repeats.bed')
 ## Extract sequences information as a json file
-str_seq_json = extract_sequences(path + sample + '/' + sample + '_str_reads.bam', merged, repeat_motif)
+str_seq_json = extract_sequences(path + sample + '/nanoexpansion/native' + sample + '_str_reads.bam', merged, repeat_motif)
 ## Extract relevant information for plot
 str_identifier = create_plot_input_files(str_seq_json, path, sample)
 
 ## Create a list with all the STR fragments
 ## Import the created plot .csv file
-plot_file = pd.read_csv(path + sample + f"/{str_identifier}_str-content.csv")
+plot_file = pd.read_csv(path + sample + '/nanoexpansion/' + f"/{str_identifier}_str-content.csv")
 ## Create the list
 read_ids = plot_file['read_id'].unique()
 STR = []
