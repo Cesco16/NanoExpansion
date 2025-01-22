@@ -178,12 +178,12 @@ def truncate_interruption(interruption_seq):
         return interruption_seq
 
 
-savepath = "/home/PERSONALE/francesco.casadei20/GridIon/"
+#savepath = "/home/PERSONALE/francesco.casadei20/GridIon/"
+#savepath = '/data/re-basecalled/'#+sample+'/'
 
-def create_plot_input_files(str_seq_json, savepath, sample):
+def create_plot_input_files(str_seq_json, sample, path):
     """Extract info relevant for plots from JSON and save as CSV."""
     data = json.loads(str_seq_json)
-
     for str_identifier, str_data in data.items():
         rows = []
 
@@ -232,7 +232,7 @@ def create_plot_input_files(str_seq_json, savepath, sample):
         str_identifier = str_identifier.replace(" (", "_")
         str_identifier = str_identifier.replace(")", "")
         str_identifier = str_identifier.replace(" ", "")
-        df.to_csv(savepath+ sample + f"/{str_identifier}_str-content.csv", index=False)
+        df.to_csv(path + sample + '/nanoexpansion' +  f"/{str_identifier}_str-content.csv", index=False)
         return str_identifier
 
 def extract_interruption_sequences(str_dataset, motif):
@@ -365,7 +365,7 @@ def extract_interruption_sequences(str_dataset, motif):
     str_seq_json = json.dumps(str_seq_dict, indent=4)
     return str_seq_json
 
-def create_plot_interruption_files(str_seq_json, savepath):
+def create_plot_interruption_files(str_seq_json, sample, path):
     """Extract info relevant for plots from JSON and save as CSV."""
     data = json.loads(str_seq_json)
     a = 0
@@ -440,9 +440,10 @@ def create_plot_interruption_files(str_seq_json, savepath):
         a += 1
         DF = pd.concat((DF, df), axis = 0)
         #print(DF)
-    DF.to_csv(savepath+sample+"/df_interrupt.csv", index=False)
+    DF.to_csv(path+sample+"/nanoexpansion/df_interrupt.csv", index=False)
 
-def split_interrupt_reads(int_df_path, savepath):
+def split_interrupt_reads(sample, path):
+    int_df_path = path + sample + '/nanoexpansion/df_interrupt.csv'
     int_df = pd.read_csv(int_df_path)
     read_ids = int_df['read_id'].unique()
     
@@ -450,7 +451,7 @@ def split_interrupt_reads(int_df_path, savepath):
         #print(read)
         df = int_df[int_df['read_id']==read]
         #print(df)
-        df.to_csv(savepath + sample + f"/{read}_interrupt.csv", index=False)
+        df.to_csv(path + sample + '/nanoexpansion' + f"/{read}_interrupt.csv", index=False)
 
 def complementary_reverse(dna):
     rev = dna[::-1]
@@ -464,7 +465,7 @@ def complementary_reverse(dna):
     rev=rev.replace('g','G')
     return rev
 
-def draw_dna_gene(sections_lengths, section_colors, savepath, motifs = ['CAG','GAG','Other'], total_length=None, figsize=(10, 3), ids=None):
+def draw_dna_gene(sections_lengths, section_colors, str_identifier, sample, path, motifs = ['CAG','GAG','Other'], total_length=None, figsize=(10, 3), ids=None):
         #fig, ax = plt.subplots()
         reg = str_identifier.split('_')[1]
     # Definisci i colori per le diverse sezioni
@@ -500,6 +501,6 @@ def draw_dna_gene(sections_lengths, section_colors, savepath, motifs = ['CAG','G
         ax.set_title(f'Expansion in {reg} ({ids})')
         ax.axis('off')
     # Mostra il grafico
-        plt.savefig(savepath + sample + '/' + ids + f'_{str_identifier}.png')
+        plt.savefig(path + sample + '/nanoexpansion/' + ids + f'_{str_identifier}.png')
         plt.show()
 
