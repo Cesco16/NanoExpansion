@@ -33,7 +33,7 @@ def bed_ru_merge(merged_tsv, repeats_bed):
     merged_tsv = merged_tsv.drop(columns='bed_varid')
     return merged_tsv
 
-def extract_sequences(bam, merged_tsv):
+def extract_sequences(bam, merged_tsv, repeat_motif):
     """Extract STR sequences and related info from BAM and create JSON."""
     str_seq_dict = {}
 
@@ -180,7 +180,7 @@ def truncate_interruption(interruption_seq):
 
 savepath = "/home/PERSONALE/francesco.casadei20/GridIon/"
 
-def create_plot_input_files(str_seq_json, savepath):
+def create_plot_input_files(str_seq_json, savepath, sample):
     """Extract info relevant for plots from JSON and save as CSV."""
     data = json.loads(str_seq_json)
 
