@@ -32,17 +32,17 @@ insertion_threshold = args.ins1
 ins_thresh = args.ins2
 
 ## Global variables
-sample = 'vac06122023'#'native9411'#'native13204'#'native10498'
-repeat_motif = 'CAG' #'TAAAA'#'CAG'
-interrupt_motif = 'CAA' #'TGGAA'#'GAG'# 'GAG'
+#sample = 'vac06122023'#'native9411'#'native13204'#'native10498'
+#repeat_motif = 'CAG' #'TAAAA'#'CAG'
+#interrupt_motif = 'CAA' #'TGGAA'#'GAG'# 'GAG'
 
 rep_length = len(repeat_motif)
 int_length = len(interrupt_motif)
 
-path = "/home/PERSONALE/francesco.casadei20/GridIon/" #path where bam and vcf files are saved
+#path = "/home/PERSONALE/francesco.casadei20/GridIon/" #path where bam and vcf files are saved
 
 ## Import straglr tsv file
-pd_straglr = pd.read_csv(path + sample + '/' + sample +'_straglr.tsv', sep="\t", header=1)
+pd_straglr = pd.read_csv(path + sample + '/' + sample +'-straglr.tsv', sep="\t", header=1)
 ## Import stranger annotated file
 pd_stranger = pd.read_csv(path + sample + '/' + sample + '_rep_plot.tsv', sep="\t", header=0)
 ## Merge straglr and stranger files
