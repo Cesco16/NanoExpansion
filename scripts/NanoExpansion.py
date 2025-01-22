@@ -333,7 +333,7 @@ for j in np.arange(0, len(complete_STR), 1):
         else:
             section_colors.append('yellow')
 
-    draw_dna_gene(gene_sections_lengths, section_colors, motifs=[repeat_motif, interrupt_motif, 'Other'], ids=read_ids[j], path) #total_length=CSTR['Length'].cumsum()[0]
+    draw_dna_gene(gene_sections_lengths, section_colors, path, motifs=[repeat_motif, interrupt_motif, 'Other'], ids=read_ids[j]) #total_length=CSTR['Length'].cumsum()[0]
 
 ## Extract repeats information for each read
 
