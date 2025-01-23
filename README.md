@@ -14,6 +14,7 @@ Some files are needed in order to run NanoExpansion:
 
 Moreover, the folder structure must be the following
 
+```
 sample/
 
 │
@@ -33,6 +34,7 @@ sample/
     ├── bed_filter.bed
     
     └── wf_str_repeats.bed
+```
 
 and the required files must be inside nanoexpansion folder.
 
