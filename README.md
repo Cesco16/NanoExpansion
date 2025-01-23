@@ -1,6 +1,7 @@
 # NanoExpansion: a tool for the characterization of Repeat Expansion Pattern in Nanopore sequencing samples
 
 NanoExpansion is a python software for the extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
+It exploits the result from straglr to generate plots of the expansion site of the region of interest (e.g. gene DMPK for DM1) and to return the compact expansion pattern string.
 
 ## Requirements
 
