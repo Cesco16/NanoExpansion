@@ -2,6 +2,31 @@
 
 NanoExpansion is a python software for the extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
 
+## Requirements
+
+Some files are needed in order to run NanoExpansion:
+
+* a sorted .bam file of the sample of interest
+* .tsv and .vcf output files from straglr
+* the catalog for STR annotation with Stranger
+* a .bed file with the region and the motif of expansion
+
+Moreover, the folder structure must be the following
+
+path/to/sample/nanoexpansion
+
+and the required files must be inside nanoexpansion folder.
+
+Depending on the straglr version used, you would need to transform the output .tsv file in order to have only the following columns:
+
+'chrom', 'start', 'end', 'repeat_unit', 'genotype', 'read', 'copy_number', 'size', 'read_start', 'strand', 'allele'
+
+If your .tsv file does not satisfy this requirement, you should first run
+
+```bash
+python transform_straglr_tsv --input 9411-straglr.tsv --output 9411-straglr.tsv
+```
+
 ## How to use NanoExpansion
 
 1. Download the repository
@@ -15,7 +40,6 @@ cd NanoExpansion
 
 ```bash
 conda env create -f requirements.yaml
-
 ```
 
 ```bash
