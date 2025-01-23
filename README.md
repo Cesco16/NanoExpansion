@@ -16,23 +16,14 @@ Moreover, the folder structure must be the following
 
 ```
 sample/
-
 │
-
 ├── nanoexpansion/
-
     ├── sample-straglr.tsv
-    
-    ├── sample-straglr.vcf
-    
-    ├── sample.sort.bam
-    
-    ├── sample.sort.bam.bai
-    
-    ├── variant_catalog_hg38.json
-    
-    ├── bed_filter.bed
-    
+    ├── sample-straglr.vcf    
+    ├── sample.sort.bam    
+    ├── sample.sort.bam.bai    
+    ├── variant_catalog_hg38.json    
+    ├── bed_filter.bed    
     └── wf_str_repeats.bed
 ```
 
