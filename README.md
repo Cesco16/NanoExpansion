@@ -15,14 +15,23 @@ Some files are needed in order to run NanoExpansion:
 Moreover, the folder structure must be the following
 
 sample/
+
 │
+
 ├── nanoexpansion/
+
     ├── sample-straglr.tsv
+    
     ├── sample-straglr.vcf
+    
     ├── sample.sort.bam
+    
     ├── sample.sort.bam.bai
+    
     ├── variant_catalog_hg38.json
+    
     ├── bed_filter.bed
+    
     └── wf_str_repeats.bed
 
 and the required files must be inside nanoexpansion folder.
@@ -34,7 +43,7 @@ Depending on the straglr version used, you would need to transform the output .t
 If your .tsv file does not satisfy this requirement, you should first run
 
 ```bash
-python transform_straglr_tsv --input 9411-straglr.tsv --output 9411-straglr.tsv
+python transform_straglr_tsv.py --input 9411-straglr.tsv --output 9411-straglr.tsv
 ```
 
 ## How to use NanoExpansion
