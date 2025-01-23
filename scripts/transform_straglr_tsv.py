@@ -6,38 +6,38 @@ parser.add_argument('--input')
 parser.add_argument('--output')
 args = parser.parse_args()
 
-input_tsv = args.input
-output_tsv = args.output
+input_file = args.input
+output_file = args.output
 
 
-def transform_tsv(input_file, output_file):
-    # Define the columns to keep and the column renaming mapping
-    columns_to_keep = [
-        "#chrom", "start", "end", "target_repeat", "genotype", "read_name",
-        "copy_number", "size", "read_start", "strand", "allele"
-    ]
-    renamed_columns = {
-        "target_repeat": "repeat_unit",
-        "read_name": "read"
-    }
+# Define the columns to keep and their new names
+columns_to_keep = {
+    'chrom': 'chrom',
+    'start': 'start',
+    'end': 'end',
+    'target_repeat': 'repeat_unit',
+    'genotype': 'genotype',
+    'read_name': 'read',
+    'copy_number': 'copy_number',
+    'size': 'size',
+    'read_start': 'read_start',
+    'strand': 'strand',
+    'allele': 'allele'
+}
 
-    # Open the input and output TSV files
-    with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
-        # Read the input file
-        reader = csv.DictReader(infile, delimiter='\t')
-        # Determine the new column order
-        new_columns = [renamed_columns.get(col, col) for col in columns_to_keep]
-        # Create the writer with the new column headers
-        writer = csv.DictWriter(outfile, fieldnames=new_columns, delimiter='\t')
-        writer.writeheader()
+# Read the input file and write the transformed data to the output file
+with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
+    reader = csv.DictReader(infile, delimiter='\t')
+    writer = csv.DictWriter(outfile, fieldnames=columns_to_keep.values(), delimiter='\t')
 
-        # Process each row
-        for row in reader:
-            # Keep only the necessary columns and rename them
-            new_row = {renamed_columns.get(col, col): row[col] for col in columns_to_keep if col in row}
-            writer.writerow(new_row)
+    # Write the header
+    outfile.write(next(infile))  # Write the first line as is
+    writer.writeheader()
 
-# Transform the TSV file
-transform_tsv(input_tsv, output_tsv)
+    # Write the transformed rows
+    for row in reader:
+        transformed_row = {columns_to_keep[key]: row[key] for key in columns_to_keep}
+        writer.writerow(transformed_row)
 
-print(f"Transformed TSV file saved as: {output_tsv}")
+
+#print(f"Transformed TSV file saved as: {output_tsv}")
