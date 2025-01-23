@@ -7,14 +7,23 @@ It exploits the result from straglr to generate plots of the expansion site of t
 
 Some files are needed in order to run NanoExpansion:
 
-* a sorted .bam file of the sample of interest
+* a sorted and indexed .bam file of the sample of interest
 * .tsv and .vcf output files from straglr
 * the catalog for STR annotation with Stranger
 * a .bed file with the region and the motif of expansion
 
 Moreover, the folder structure must be the following
 
-path/to/sample/nanoexpansion
+sample/
+│
+├── nanoexpansion/
+    ├── sample-straglr.tsv
+    ├── sample-straglr.vcf
+    ├── sample.sort.bam
+    ├── sample.sort.bam.bai
+    ├── variant_catalog_hg38.json
+    ├── bed_filter.bed
+    └── wf_str_repeats.bed
 
 and the required files must be inside nanoexpansion folder.
 
