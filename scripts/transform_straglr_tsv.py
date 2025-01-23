@@ -6,8 +6,8 @@ parser.add_argument('--input')
 parser.add_argument('--output')
 args = parser.parse_args()
 
-input_file = args.input
-output_file = args.output
+input_tsv = args.input
+output_tsv = args.output
 
 
 def transform_tsv(input_file, output_file):
