@@ -12,7 +12,7 @@ output_file = args.output
 
 # Define the columns to keep and their new names
 columns_to_keep = {
-    'chrom': 'chrom',
+    '#chrom': '#chrom',
     'start': 'start',
     'end': 'end',
     'target_repeat': 'repeat_unit',
@@ -30,14 +30,23 @@ with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outf
     reader = csv.DictReader(infile, delimiter='\t')
     writer = csv.DictWriter(outfile, fieldnames=columns_to_keep.values(), delimiter='\t')
 
-    # Write the header
-    outfile.write(next(infile))  # Write the first line as is
+    # Write the header comment
+    header_comment = next(infile)
+    outfile.write(header_comment)
+
+    # Print the headers for debugging
+    print("Headers in input file:", reader.fieldnames)
+
+    # Write the new header
     writer.writeheader()
 
     # Write the transformed rows
     for row in reader:
+        # Print the first row for debugging
+        if reader.line_num == 2:
+            print("First row of data:", row)
+
         transformed_row = {columns_to_keep[key]: row[key] for key in columns_to_keep}
         writer.writerow(transformed_row)
 
-
-#print(f"Transformed TSV file saved as: {output_tsv}")
+print(f"Transformed data has been written to {output_file}")
