@@ -36,7 +36,7 @@ Depending on the straglr version used, you would need to transform the output .t
 If your .tsv file does not satisfy this requirement, you should first run
 
 ```bash
-python transform_straglr_tsv.py --input sample-straglr.tsv --output sample-straglr.tsv
+python transform_straglr_tsv.py --input sample-straglr_old.tsv --output sample-straglr.tsv
 ```
 
 If your version of straglr does not output the .vcf file, you can create it starting from the .tsv and the .bed files, by running:
