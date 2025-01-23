@@ -47,16 +47,20 @@ pd_straglr = pd.read_csv(path  +  sample + '/nanoexpansion/'+ sample + '-straglr
 pd_stranger = pd.read_csv(path + sample + '/nanoexpansion/native'  + sample + '_rep_plot.tsv', sep="\t", header=0)
 ## Merge straglr and stranger files
 merged = pd.merge(pd_straglr, pd_stranger, left_on='start', right_on='POS')
-
+#print(pd_straglr)
+#print(pd_stranger)
 ## Merging BED RU info
 merged = bed_ru_merge(merged, path  + 'wf_str_repeats.bed')
+print(merged)
 ## Extract sequences information as a json file
 str_seq_json = extract_sequences(path +  sample + '/nanoexpansion/native' + sample + '_str_reads.bam', merged, repeat_motif)
 ## Extract relevant information for plot
+#print(str_seq_json)
 str_identifier = create_plot_input_files(str_seq_json, sample, path)
 #savepath = '/data/re-basecalled/'+sample+'/'
 ## Create a list with all the STR fragments
 ## Import the created plot .csv file
+
 plot_file = pd.read_csv(path + sample + '/nanoexpansion'  +  f"/{str_identifier}_str-content.csv")
 ## Create the list
 read_ids = plot_file['read_id'].unique()
@@ -175,6 +179,8 @@ for i in np.arange(0, len(compact_STR), 1):
 repeat_unit = interrupt_motif #'GAG'
 repeat_unit_indexes = []
 interruption_indexes = []
+#print(compact_STR)
+#print(df_STR)
 str_sequence = df_STR[df_STR['type']=='Interruption'].iloc[0]['sequence']
 
 ## Extract interruption information
@@ -187,7 +193,7 @@ split_interrupt_reads(sample, path)
 
 ## Create a list of lists with interruptions fragments
 read_ids = plot_file['read_id'].unique()
-print(read_ids)
+#print(read_ids)
 INTR = []
 for r in read_ids:#[0:3]:
     if os.path.exists(path + sample + '/nanoexpansion' + f"/{r}_interrupt.csv"): 
@@ -276,7 +282,7 @@ for f in np.arange(0, len(INTR),1):
 ## sum up new compact INTR
 MOTIF = interrupt_motif #'GAG'#merged['repeat_unit'][0]
 compact_INTR = []
-print(INTR)
+#print(INTR)
 for f in np.arange(0, len(INTR),1):
     compact_intr = []
     for k in np.arange(0, len(INTR[f]),1):

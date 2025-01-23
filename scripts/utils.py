@@ -52,8 +52,9 @@ def extract_sequences(bam, merged_tsv, repeat_motif):
         for record in input_bam:
             if record.query_name in relevant_read_ids:
                 read = merged_tsv['read'] == record.query_name
-                #print(read)
+                print(read)
                 merged_varid = merged_tsv[read & (merged_tsv['VARID'] == varid)]
+                print(merged_varid)
                 if not np.isnan(merged_varid['STR_NORMAL_MAX'].values[0]):###
                     strand = merged_varid['strand'].values[0]
                     chrom = merged_varid['bed_chr'].values[0]
@@ -99,11 +100,13 @@ def extract_sequences(bam, merged_tsv, repeat_motif):
                     if read_sequence is not None:
                         if strand == "+":
                             str_sequence = read_sequence[
-                                (repeat_start):(repeat_end + 1)
+                                (int(repeat_start)):(int(repeat_end) + 1)
                             ]
                         if strand == "-":
-                            reversed_repeat_start = len(read_sequence) - repeat_end
-                            reversed_repeat_end = len(read_sequence) - repeat_start
+                            reversed_repeat_start = int(len(read_sequence) - repeat_end)
+                            reversed_repeat_end = int(len(read_sequence) - repeat_start)
+                            print(reversed_repeat_start)
+                            print(reversed_repeat_end)
                             str_sequence = read_sequence[
                                 (reversed_repeat_start):(reversed_repeat_end + 1)
                             ]
@@ -185,6 +188,8 @@ def create_plot_input_files(str_seq_json, sample, path):
     """Extract info relevant for plots from JSON and save as CSV."""
     data = json.loads(str_seq_json)
     for str_identifier, str_data in data.items():
+        print('STR_id', str_identifier)
+        print('STR_data', str_data)
         rows = []
 
         for read_id, read_details in str_data["observed_reads"].items():
