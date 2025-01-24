@@ -99,14 +99,14 @@ SnpSift extractFields sample_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU
 SnpSift extractFields sample_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > sample_rep_plot.tsv
 ```
 
+N.B. Please, do not change the filenames created in steps 3-5.
+
 ## NanoExpansion
 
 6. Execute NanoExpansion
 ```bash
 NanoExpansion.py --sample sample --repeat CAG --interruption CAA --path /path/to/sample/folder
 ```
-
-N.B. Please, do not change the filenames created in steps 3-5.
 
 ### Options
 
