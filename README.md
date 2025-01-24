@@ -113,7 +113,8 @@ N.B. Please, do not change the filenames created in steps 3-5.
 To run the script, use the following command:
 
 ```bash
-python scripts/NanoExpansion.py [OPTIONS]
+python scripts/NanoExpansion.py --help
+
 
 ## Example of usage
 
