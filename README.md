@@ -45,7 +45,7 @@ If your version of straglr does not output the .vcf file, you can create it star
 python create_vcf_file.py --tsv sample-straglr.tsv --bed sample-straglr.bed --vcf sample-straglr.vcf
 ```
 
-## How to use NanoExpansion
+## Pre-processing
 
 1. Download the repository
 
@@ -99,12 +99,21 @@ SnpSift extractFields sample_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU
 SnpSift extractFields sample_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > sample_rep_plot.tsv
 ```
 
+## NanoExpansion
+
 6. Execute NanoExpansion
 ```bash
 NanoExpansion.py --sample sample --repeat CAG --interruption CAA --path /path/to/sample/folder
 ```
 
 N.B. Please, do not change the filenames created in steps 3-5.
+
+## Usage
+
+To run the script, use the following command:
+
+```bash
+python scripts/NanoExpansion.py [OPTIONS]
 
 ## Example of usage
 
