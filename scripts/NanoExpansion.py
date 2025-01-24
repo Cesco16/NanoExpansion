@@ -16,12 +16,12 @@ from utils import bed_ru_merge, extract_sequences, create_plot_input_files, extr
 
 
 parser = argparse.ArgumentParser(description='missing_data',formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--sample')
-parser.add_argument('--repeat', default='CAG')
-parser.add_argument('--interruption', default='CAA')
-parser.add_argument('--path')
-parser.add_argument('--ins1', default=3)
-parser.add_argument('--ins2', default=1)
+parser.add_argument('--sample', required=True, help='sample ID')
+parser.add_argument('--repeat', required=True, default='CAG', help='Main repeat motif')
+parser.add_argument('--interruption', required=True, default='CAA', help='Interruption repeat motif')
+parser.add_argument('--path', required=True, help='Path to sample/nanoexpansion/')
+parser.add_argument('--ins1', required=True, default=3, help='Threshold for main motif correction')
+parser.add_argument('--ins2', required=True, default=1, help='Threshold for interruption motif correction')
 args = parser.parse_args()
 
 sample = args.sample
