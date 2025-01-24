@@ -105,7 +105,7 @@ N.B. Please, do not change the filenames created in steps 3-5.
 
 6. Execute NanoExpansion
 ```bash
-NanoExpansion.py --sample sample --repeat CAG --interruption CAA --path /path/to/sample/folder
+python NanoExpansion.py --sample sample --repeat CAG --interruption CAA --path /path/to/sample/folder
 ```
 
 ### Options
