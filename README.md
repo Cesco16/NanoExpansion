@@ -154,7 +154,7 @@ fa9331e7-441a-4d13-bace-b6b2c5e11a40 :  (CTG)69(CCGCCG)(CTG)35(CCGCCGCCG)(CTG)22
 There is also the Snakemake pipeline implementation of NanoExpansion.
 It starts by running straglr on the bam file up to executing NanoExpansion.
 
-To run the Snakemake pipeline:
+To run the Snakemake pipeline (after activating the conda environment):
 
 ```bash
 snakemake --config sample=<sample_name> motif=<motif_value> interruption=<interruption_value> ins1=<ins1_value> ins2=<ins2_value>
