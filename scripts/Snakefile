@@ -36,7 +36,7 @@ rule tsv_to_vcf:
     output:
         vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
     log:
-		    "logs/vcf/{sample}.log"
+	"logs/vcf/{sample}.log"
     message: ">> {wildcards.sample} : creating straglr vcf file"
     shell:
         "python scripts/create_vcf_file.py --tsv {input.tsv} --bed {input.bed} --vcf {output.vcf}"
@@ -47,7 +47,7 @@ rule transform_tsv:
     output:
         tsv_t=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv"
     log:
-		    "logs/tsv/{sample}.log"
+	"logs/tsv/{sample}.log"
     message: ">> {wildcards.sample} : transforming straglr tsv file"
     shell:
         "python scripts/transform_straglr_tsv.py --input {input.tsv} --output {output.tsv_t}"
@@ -94,6 +94,8 @@ rule stranger:
         vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
     output:
         vcf_o=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf"
+    log:
+	"logs/stranger/{sample}.log"
     message: ">> {wildcards.sample} : annotating with stranger"
     shell:
         "stranger -f {input.json} {input.vcf} > {output.vcf_o} | sed 's/\\ / _/g'"
@@ -119,6 +121,8 @@ rule snipsift_annot:
         vcf=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
     output:
         tsv=homepath+"{sample}/nanoexpansion/"+"{sample}_rep_annot.tsv"
+    log:
+	"logs/snipsift/{sample}.log"
     message: ">> {wildcards.sample} : snipsift annot"
     shell:
         "SnpSift extractFields {input.vcf} CHROM POS ALT FILTER REF RL RU REPID VARID STR_STATUS > {output.tsv}"
@@ -142,7 +146,8 @@ rule nanoexpansion:
         interruption="{interruption}",
         ins1="{ins1}",
         ins2="{ins2}"
+    log:
+	"logs/NanoExpansion/{sample}.log"
     message: ">> {wildcards.sample} : executing NanoExpansion"
     shell:
         "python scripts/NanoExpansion.py --sample {sample} --repeat {params.motif} --interruption {params.interruption} --path {input.path} --ins1 {params.ins1} --ins2 {params.ins2}
-
