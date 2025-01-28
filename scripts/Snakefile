@@ -9,10 +9,10 @@ path = '/home/PERSONALE/francesco.casadei20/'
 
 rule all:
     input:
-	expand(homepath+"{sample}/nanoexpansion/{sample}"+"_str_reads.bam", sample=config["sample"]),
-	expand(homepath+"{sample}/nanoexpansion/{sample}"+"_str_regions.bam", sample=config["sample"]),
-	expand(homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv", sample=config["sample"]),
 	expand(homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf", sample=config["sample"]),
+	expand(homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv", sample=config["sample"]),
+	expand(homepath+"{sample}/nanoexpansion/"+"{sample}_str_regions.bam", sample=config["sample"]),
+	expand(homepath+"{sample}/nanoexpansion/"+"{sample}_str_reads.bam", sample=config["sample"]),
         expand(homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf", sample=config["sample"]),
         expand(homepath+"{sample}/nanoexpansion/"+"{sample}_rep_annot.tsv", sample=config["sample"]),
         expand(homepath+"{sample}/nanoexpansion/"+"{sample}_rep_plot.tsv", sample=config["sample"]),
