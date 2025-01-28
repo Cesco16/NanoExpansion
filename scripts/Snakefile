@@ -150,4 +150,4 @@ rule nanoexpansion:
 	"logs/NanoExpansion/{sample}.log"
     message: ">> {wildcards.sample} : executing NanoExpansion"
     shell:
-        "python scripts/NanoExpansion.py --sample {sample} --repeat {params.motif} --interruption {params.interruption} --path {input.path} --ins1 {params.ins1} --ins2 {params.ins2}
+        "python scripts/NanoExpansion.py --sample {sample} --repeat {params.motif} --interruption {params.interruption} --path {input.path} --ins1 {params.ins1} --ins2 {params.ins2}"
