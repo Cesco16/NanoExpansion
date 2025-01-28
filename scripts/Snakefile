@@ -31,7 +31,7 @@ rule all:
 
 rule tsv_to_vcf:
     input:
-        tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv"
+        tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv",
         bed=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.bed"
     output:
         vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
@@ -80,7 +80,7 @@ rule tail:
 
 rule select_reads:
     input:
-        bam=homepath+"{sample}/nanoexpansion/{sample}"+"_str_regions.bam"
+        bam=homepath+"{sample}/nanoexpansion/{sample}"+"_str_regions.bam",
         reads=homepath+"{sample}/nanoexpansion/"+"{sample}_reads_to_filter.txt"
     output:
         bam_o=homepath+"{sample}/nanoexpansion/{sample}"+"_str_reads.bam"
