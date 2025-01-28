@@ -4,6 +4,7 @@ import yaml
 homepath = '/home/PERSONALE/francesco.casadei20/GridIon/re-basecalled/'
 refpath = '/home/PERSONALE/francesco.casadei20/Repeats/GRCh38.fasta'
 nanopath = '/home/PERSONALE/francesco.casadei20/NanoExpansion/'
+gridpath = '/home/PERSONALE/francesco.casadei20/GridIon/'
 path = '/home/PERSONALE/francesco.casadei20/'
 
 rule all:
@@ -90,7 +91,7 @@ rule select_reads:
 
 rule stranger:
     input:
-        json=homepath + "variant_catalog_hg38.json",
+        json=gridpath + "variant_catalog_hg38.json",
         vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
     output:
         vcf_o=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf"
