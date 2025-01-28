@@ -157,7 +157,7 @@ It starts by running straglr on the bam file up to executing NanoExpansion.
 To run the Snakemake pipeline (after activating the conda environment):
 
 ```bash
-snakemake --config sample=<sample_name> motif=<motif_value> interruption=<interruption_value> ins1=<ins1_value> ins2=<ins2_value>
+snakemake --cores N --config sample=<sample_name> motif=<motif_value> interruption=<interruption_value> ins1=<ins1_value> ins2=<ins2_value>
 ```
 
 ## License
