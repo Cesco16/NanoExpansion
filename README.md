@@ -149,6 +149,17 @@ fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CTG)12
 fa9331e7-441a-4d13-bace-b6b2c5e11a40 :  (CTG)69(CCGCCG)(CTG)35(CCGCCGCCG)(CTG)22(TTG)118(TCG)(TTG)31(TCG)(TTG)123(CTG)118(CCGCCCG)(CTG)198
 ```
 
+## Snakemake
+
+There is also the Snakemake pipeline implementation of NanoExpansion.
+It starts by running straglr on the bam file up to executing NanoExpansion.
+
+To run the Snakemake pipeline:
+
+```bash
+snakemake --config sample=<sample_name> motif=<motif_value> interruption=<interruption_value> ins1=<ins1_value> ins2=<ins2_value>
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).  
