@@ -149,10 +149,10 @@ rule nanoexpansion:
 	output:
 		homepath+"{sample}/nanoexpansion/DM1_DMPK.txt"
 	params:
-		motif="{motif}",
-		interruption="{interruption}",
-		ins1="{ins1}",
-		ins2="{ins2}"
+		motif=lambda wildcards: config["motif"],
+		interruption=lambda wildcards: config["interruption"],
+		ins1=lambda wildcards: config["ins1"],
+		ins2=lambda wildcards: config["ins2"]
 	log:
 		"logs/NanoExpansion/{sample}.log"
 	message: ">> {wildcards.sample} : executing NanoExpansion"
