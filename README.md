@@ -1,7 +1,7 @@
 # NanoExpansion: a tool for the characterization of Repeat Expansion Patterns in Nanopore sequencing samples
 
 NanoExpansion is a python software for the extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
-It exploits the result from straglr to generate plots of the expansion site of the region of interest (e.g. gene DMPK for DM1) and to return the compact expansion pattern string.
+It exploits the result from straglr to generate plots of the expansion site of the region of interest (e.g. gene *DMPK* for DM1) and to return the compact expansion pattern string.
 
 ## Requirements
 
@@ -127,11 +127,11 @@ Here an example of NanoExpansion applied to a patient affected by Mytonic Dystro
 Thanks to NanoExpansion, it is possible to characterize the wild-type allele.
 The numbers in the plots represents the number of nucleotides in each region. The number of repeats is obtained dividing those numbers by the length of the repeat motif (in this case, 3).
 
-![Example of wild-type allele in gene DMPK](images/str_eg2.PNG)
+![Example of wild-type allele in gene *DMPK*](images/str_eg2.PNG)
 
 and also the mutated reads. Here an example of an expanded read, that shows a TTG interruption pattern:
 
-![Example of STR with interruption pattern in gene DMPK](images/STR_eg.PNG)
+![Example of STR with interruption pattern in gene *DMPK*](images/STR_eg.PNG)
 
 Finally, NanoExpansion returns the complete characterization of repeat patterns in all the available reads:
 
@@ -160,7 +160,7 @@ To run the Snakemake pipeline (after activating the conda environment):
 snakemake --cores N --config sample=<sample_name> motif=<motif_value> interruption=<interruption_value> ins1=<ins1_value> ins2=<ins2_value> gene=<gene> disease=<disease>
 ```
 
-An example for an ALS patient is:
+An example for an ALS patient and gene *C9ORF72* is:
 
 ```bash
 snakemake --cores 4 --config sample=NPRBMNLE motif='CCCCGG' interruption='GAG' ins1=10 ins2=7 gene="C9ORF72" disease="ALS"
