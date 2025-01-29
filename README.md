@@ -18,12 +18,12 @@ Moreover, the folder structure must be the following
 sample/
 │
 ├── nanoexpansion/
-    ├── sample-straglr.tsv
-    ├── sample-straglr.vcf    
-    ├── sample.sort.bam    
-    ├── sample.sort.bam.bai    
+    ├── <sample>-straglr.tsv
+    ├── <sample>-straglr.vcf    
+    ├── <sample>.sort.bam    
+    ├── <sample>.sort.bam.bai    
     ├── variant_catalog_hg38.json    
-    ├── bed_filter.bed    
+    ├── <gene>_filter.bed    
     └── wf_str_repeats.bed
 ```
 
@@ -36,13 +36,13 @@ Depending on the straglr version used, you would need to transform the output .t
 If your .tsv file does not satisfy this requirement, you should first run
 
 ```bash
-python transform_straglr_tsv.py --input sample-straglr_old.tsv --output sample-straglr.tsv
+python transform_straglr_tsv.py --input <sample>-straglr_old.tsv --output <sample>-straglr.tsv
 ```
 
 If your version of straglr does not output the .vcf file, you can create it starting from the .tsv and the .bed files, by running:
 
 ```bash
-python create_vcf_file.py --tsv sample-straglr.tsv --bed sample-straglr.bed --vcf sample-straglr.vcf
+python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed --vcf <sample>-straglr.vcf
 ```
 
 ## Pre-processing
@@ -67,36 +67,36 @@ conda activate nanoexpansion
 3. Index .bam STR file and keep only reads with STR of interest
 
 ```bash
-samtools view -b -h -o sample_str_regions.bam -L bed_filter.bed sample_sort.bam
+samtools view -b -h -o <sample>_str_regions.bam -L <gene>_filter.bed <sample>_sort.bam
 ```
 ```bash
-samtools index sample_str_regions.bam
+samtools index <sample>_str_regions.bam
 ```
 ```bash
-tail -n +3 sample_straglr.tsv | cut -f 6 > sample_reads_to_filter.txt
+tail -n +3 <sample>_straglr.tsv | cut -f 6 > <sample>_reads_to_filter.txt
 ```
 ```bash
-samtools view --write-index -N sample_reads_to_filter.txt -o sample_str_reads.bam sample_str_regions.bam
+samtools view --write-index -N <sample>_reads_to_filter.txt -o <sample>_str_reads.bam <sample>_str_regions.bam
 ```
 
 4. Annotate .vcf using Stranger
 
 ```bash
-stranger -f variant_catalog_hg38.json sample_straglr.vcf > sample_straglr_annot.vcf | sed 's/\\ / _/g'
+stranger -f variant_catalog_hg38.json <sample>_straglr.vcf > <sample>_straglr_annot.vcf | sed 's/\\ / _/g'
 ```
 ```bash
-bgzip sample_straglr_annot.vcf
+bgzip <sample>_straglr_annot.vcf
 ```
 ```bash
-tabix sample_straglr_annot.vcf.gz
+tabix <sample>_straglr_annot.vcf.gz
 ```
 
 5. Extract fields of interest
 ```bash
-SnpSift extractFields sample_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU REPID VARID STR_STATUS > sample_rep_annot.tsv
+SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU REPID VARID STR_STATUS > <sample>_rep_annot.tsv
 ```
 ```bash
-SnpSift extractFields sample_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > sample_rep_plot.tsv
+SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > <sample>_rep_plot.tsv
 ```
 
 N.B. Please, do not change the filenames created in steps 3-5.
@@ -105,7 +105,7 @@ N.B. Please, do not change the filenames created in steps 3-5.
 
 6. Execute NanoExpansion
 ```bash
-python NanoExpansion.py --sample sample --repeat CAG --interruption CAA --path /path/to/sample/nanoexpansion/
+python NanoExpansion.py --sample <sample> --repeat CAG --interruption CAA --path /path/to/sample/nanoexpansion/
 ```
 
 ### Options
