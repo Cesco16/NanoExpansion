@@ -166,6 +166,10 @@ An example for an ALS patient is:
 snakemake --cores 4 --config sample=NPRBMNLE motif='CCCCGG' interruption='GAG' ins1=10 ins2=7 gene="C9ORF72" disease="ALS"
 ```
 
+The DAG of the snakemake pipeline is shown below:
+
+![DAG of the snakemake pipeline on a ALS patient](images/pipeline.png)
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).  
