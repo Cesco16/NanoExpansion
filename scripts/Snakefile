@@ -16,7 +16,7 @@ rule all:
 		expand(homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf", sample=config["sample"]),
 		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_annot.tsv", sample=config["sample"]),
 		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_plot.tsv", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/DM1_DMPK.txt", sample=config["sample"])
+		expand(homepath+"{sample}/nanoexpansion/{disease}_{gene}.txt", sample=config["sample"], disease=config["disease"], gene=config["gene"])
 
 #rule straglr:
 #	  input:
@@ -147,7 +147,7 @@ rule nanoexpansion:
 	input:
 		path=homepath+"{sample}/nanoexpansion/"
 	output:
-		homepath+"{sample}/nanoexpansion/DM1_DMPK.txt"
+		homepath+"{sample}/nanoexpansion/{disease}_{gene}.txt"
 	params:
 		motif=lambda wildcards: config["motif"],
 		interruption=lambda wildcards: config["interruption"],
