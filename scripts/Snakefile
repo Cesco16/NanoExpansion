@@ -7,6 +7,8 @@ nanopath = '/home/PERSONALE/francesco.casadei20/NanoExpansion/'
 gridpath = '/home/PERSONALE/francesco.casadei20/GridIon/'
 path = '/home/PERSONALE/francesco.casadei20/'
 
+ruleorder: tail > nanoexpansion
+
 rule all:
 	input:
 		expand(homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf", sample=config["sample"]),
@@ -46,7 +48,7 @@ rule tsv_to_vcf:
 		"logs/vcf/{sample}.log"
 	message: ">> {wildcards.sample} : creating straglr vcf file"
 	shell:
-		"python scripts/create_vcf_file.py --tsv {input.tsv} --bed {input.bed} --vcf {output.vcf} --gene{params.gene}"
+		"python create_vcf_file.py --tsv {input.tsv} --bed {input.bed} --vcf {output.vcf} --gene{params.gene}"
 
 rule transform_tsv:
 	input:
@@ -57,7 +59,7 @@ rule transform_tsv:
 		"logs/tsv/{sample}.log"
 	message: ">> {wildcards.sample} : transforming straglr tsv file"
 	shell:
-		"python scripts/transform_straglr_tsv.py --input {input.tsv} --output {output.tsv_t}"
+		"python transform_straglr_tsv.py --input {input.tsv} --output {output.tsv_t}"
 
 rule select_regions_bam:
 	input:
@@ -157,4 +159,4 @@ rule nanoexpansion:
 		"logs/NanoExpansion/{sample}_{disease}_{gene}.log"
 	message: ">> {wildcards.sample} : executing NanoExpansion"
 	shell:
-		"python scripts/NanoExpansion.py --sample {sample} --repeat {params.motif} --interruption {params.interruption} --path {input.path} --ins1 {params.ins1} --ins2 {params.ins2}"
+		"python NanoExpansion.py --sample {sample} --repeat {params.motif} --interruption {params.interruption} --path {input.path} --ins1 {params.ins1} --ins2 {params.ins2}"
