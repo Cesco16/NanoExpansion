@@ -40,11 +40,13 @@ rule tsv_to_vcf:
         bed=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.bed"
     output:
         vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
+    params:
+        gene=lambda wildcards: config["gene"]
     log:
 	"logs/vcf/{sample}.log"
     message: ">> {wildcards.sample} : creating straglr vcf file"
     shell:
-        "python scripts/create_vcf_file.py --tsv {input.tsv} --bed {input.bed} --vcf {output.vcf}"
+        "python scripts/create_vcf_file.py --tsv {input.tsv} --bed {input.bed} --vcf {output.vcf} --gene{params.gene}"
 
 rule transform_tsv:
     input:
