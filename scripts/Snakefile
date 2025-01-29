@@ -64,7 +64,7 @@ rule transform_tsv:
 rule select_regions_bam:
 	input:
 		bam=homepath+"{sample}/{sample}"+"-dorado.pass.bam",
-		bed=nanopath+"bed/{disease}_filter.bed",
+		bed=nanopath+"bed/{gene}_filter.bed",
 	output:
 		bam_o=homepath+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam"
 	message: ">> {wildcards.sample} : selecting regions of interest in bam file"
