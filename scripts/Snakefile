@@ -147,7 +147,7 @@ rule snipsift_plot:
 
 rule nanoexpansion:
 	input:
-		path=homepath+"{sample}/nanoexpansion/"
+		path=homepath #+"{sample}/nanoexpansion/"
 	output:
 		homepath+"{sample}/nanoexpansion/{sample}_{disease}_{gene}.txt"
 	params:
