@@ -163,7 +163,7 @@ snakemake --cores N --config sample=<sample_name> motif=<motif_value> interrupti
 An example for an ALS patient and gene *C9ORF72* is:
 
 ```bash
-snakemake --cores 4 --config sample=NPRBMNLE motif='CCCCGG' interruption='GAG' ins1=10 ins2=7 gene="C9ORF72" disease="ALS"
+snakemake --cores 4 --config sample=NG15091 motif='CCCCGG' interruption='GAG' ins1=10 ins2=7 gene="C9ORF72" disease="ALS"
 ```
 
 The DAG of the snakemake pipeline is shown below:
