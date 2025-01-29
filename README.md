@@ -168,7 +168,11 @@ snakemake --cores 4 --config sample=NPRBMNLE motif='CCCCGG' interruption='GAG' i
 
 The DAG of the snakemake pipeline is shown below:
 
-![DAG of the snakemake pipeline on a ALS patient](images/pipeline.png)
+
+
+<div align="center">
+  <img src="images/pipeline.png" width="500">
+</div>
 
 ## License
 
