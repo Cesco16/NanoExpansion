@@ -167,6 +167,10 @@ The DAG of the snakemake pipeline is shown below:
   <img src="images/pipeline.png" width="500">
 </div>
 
+### N.B.
+Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).  
