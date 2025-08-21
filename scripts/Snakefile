@@ -1,7 +1,7 @@
 import os
 import yaml
 
-path = '/path/to/home'
+path = '/path/to/home/'
 refpath = '/path/to/Reference/hg38.fa'
 nanopath = '/path/to/NanoExpansion/'
 
