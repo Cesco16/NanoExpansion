@@ -25,7 +25,7 @@ sample/
     ├── <sample>.sort.bam.bai    
     ├── variant_catalog_hg38.json    
     ├── <gene>_filter.bed    
-    └── wf_str_repeats.bed
+    └── str_repeats.bed
 ```
 
 and the required files must be inside nanoexpansion folder.
