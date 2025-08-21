@@ -141,6 +141,7 @@ fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CTG)12
 fa9331e7-441a-4d13-bace-b6b2c5e11a40 :  (CTG)69(CCGCCG)(CTG)35(CCGCCGCCG)(CTG)22(TTG)118(TCG)(TTG)31(TCG)(TTG)123(CTG)118(CCGCCCG)(CTG)198
 ```
 
+<!--
 ## Snakemake
 
 The Snakemake pipeline implementation of NanoExpansion is available.
@@ -165,6 +166,7 @@ The DAG of the snakemake pipeline is shown below:
 <div align="center">
   <img src="images/pipeline.png" width="500">
 </div>
+-->
 
 ### N.B.
 * Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
