@@ -1,33 +1,31 @@
 import os
 import yaml
 
-homepath = '/home/PERSONALE/francesco.casadei20/GridIon/re-basecalled/'
-refpath = '/home/PERSONALE/francesco.casadei20/Repeats/GRCh38.fasta'
-nanopath = '/home/PERSONALE/francesco.casadei20/NanoExpansion/'
-gridpath = '/home/PERSONALE/francesco.casadei20/GridIon/'
-path = '/home/PERSONALE/francesco.casadei20/'
+path = '/path/to/home'
+refpath = '/path/to/Reference/hg38.fa'
+nanopath = '/path/to/NanoExpansion/'
 
 ruleorder: tail > nanoexpansion
 
 rule all:
 	input:
-		expand(homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_str_regions.bam", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_str_reads.bam", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_annot.tsv", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_plot.tsv", sample=config["sample"]),
-		expand(homepath+"{sample}/nanoexpansion/{sample}_{disease}_{gene}.txt", sample=config["sample"], disease=config["disease"], gene=config["gene"])
+		expand(path+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/"+"native{sample}_str_regions.bam", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/"+"native{sample}_str_reads.bam", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/"+"native{sample}_rep_annot.tsv", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/"+"native{sample}_rep_plot.tsv", sample=config["sample"]),
+		expand(path+"{sample}/nanoexpansion/{sample}_{disease}_{gene}.txt", sample=config["sample"], disease=config["disease"], gene=config["gene"])
 
 #rule straglr:
 #	  input:
 #		  loci=nanopath+"bed/bed_filter.bed",
-#		  bam=homepath+"{sample}/{sample}"+"-dorado.pass.bam",
+#		  bam=path+"{sample}/{sample}"+"-dorado.pass.bam",
 #		  ref=refpath,
 #      straglrpath = path + "straglr/straglr.py"
 #	  output:
-#		  tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv"
+#		  tsv=path+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv"
 #	  log:
 #		  "logs/straglr/{sample}.log"
 #	  conda:
@@ -38,10 +36,10 @@ rule all:
 
 rule tsv_to_vcf:
 	input:
-		tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv",
-		bed=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.bed"
+		tsv=path+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv",
+		bed=path+"{sample}/nanoexpansion/"+"{sample}-straglr.bed"
 	output:
-		vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
+		vcf=path+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
 	params:
 		gene=lambda wildcards: config["gene"]
 	log:
@@ -52,9 +50,9 @@ rule tsv_to_vcf:
 
 rule transform_tsv:
 	input:
-		tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv"
+		tsv=path+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv"
 	output:
-		tsv_t=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv"
+		tsv_t=path+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv"
 	log:
 		"logs/tsv/{sample}.log"
 	message: ">> {wildcards.sample} : transforming straglr tsv file"
@@ -63,46 +61,46 @@ rule transform_tsv:
 
 rule select_regions_bam:
 	input:
-		bam=homepath+"{sample}/{sample}"+"-dorado.pass.bam",
+		bam=path+"{sample}/{sample}"+"-dorado.pass.bam",
 		bed=nanopath+"bed/{gene}_filter.bed",
 	output:
-		bam_o=homepath+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam"
+		bam_o=path+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam"
 	message: ">> {wildcards.sample} : selecting regions of interest in bam file"
 	shell:
 		"samtools view -b -h -o {output.bam_o} -L {input.bed} {input.bam}"
 
 rule index_str_bam:
 	input:
-		bam=homepath+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam"
+		bam=path+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam"
 	output:
-		bai=homepath+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam.bai"
+		bai=path+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam.bai"
 	shell:
 		"samtools index {input.bam}"
 
 rule tail:
 	input:
-		tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv"
+		tsv=path+"{sample}/nanoexpansion/"+"{sample}-straglr.tsv"
 	output:
-		reads=homepath+"{sample}/nanoexpansion/"+"{sample}_reads_to_filter.txt"
+		reads=path+"{sample}/nanoexpansion/"+"{sample}_reads_to_filter.txt"
 	shell:
 		"tail -n +3 {input.tsv} | cut -f 6 > {output.reads}"
 
 rule select_reads:
 	input:
-		bam=homepath+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam",
-		reads=homepath+"{sample}/nanoexpansion/"+"{sample}_reads_to_filter.txt"
+		bam=path+"{sample}/nanoexpansion/native{sample}"+"_str_regions.bam",
+		reads=path+"{sample}/nanoexpansion/"+"{sample}_reads_to_filter.txt"
 	output:
-		bam_o=homepath+"{sample}/nanoexpansion/native{sample}"+"_str_reads.bam"
+		bam_o=path+"{sample}/nanoexpansion/native{sample}"+"_str_reads.bam"
 	message: ">> {wildcards.sample} : selecting reads of interest in bam file"
 	shell:
 		"samtools view --write-index -N {input.reads} -o {output.bam_o} {input.bam}"
 
 rule stranger:
 	input:
-		json=gridpath + "variant_catalog_hg38.json",
-		vcf=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
+		json=path + "variant_catalog_hg38.json",
+		vcf=path+"{sample}/nanoexpansion/"+"{sample}-straglr.vcf"
 	output:
-		vcf_o=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf"
+		vcf_o=path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf"
 	log:
 		"logs/stranger/{sample}.log"
 	message: ">> {wildcards.sample} : annotating with stranger"
@@ -111,25 +109,25 @@ rule stranger:
 
 rule bgzip:
 	input:
-		vcf=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf"
+		vcf=path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf"
 	output:
-		homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
+		path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
 	shell:
 		"bgzip {input.vcf}"
 
 rule tabix:
 	input:
-		vcf=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
+		vcf=path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
 	output:
-		homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz.csi"
+		path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz.csi"
 	shell:
 		"tabix {input.vcf}"
 
 rule snipsift_annot:
 	input:
-		vcf=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
+		vcf=path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
 	output:
-		tsv=homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_annot.tsv"
+		tsv=path+"{sample}/nanoexpansion/"+"native{sample}_rep_annot.tsv"
 	log:
 		"logs/snipsift/{sample}.log"
 	message: ">> {wildcards.sample} : snipsift annot"
@@ -138,18 +136,18 @@ rule snipsift_annot:
 
 rule snipsift_plot:
 	input:
-		vcf=homepath+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
+		vcf=path+"{sample}/nanoexpansion/"+"{sample}_straglr_annot.vcf.gz"
 	output:
-		tsv=homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_plot.tsv"
+		tsv=path+"{sample}/nanoexpansion/"+"native{sample}_rep_plot.tsv"
 	message: ">> {wildcards.sample} : snipsift plot"
 	shell:
 		"SnpSift extractFields {input.vcf} CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > {output.tsv}"
 
 rule nanoexpansion:
 	input:
-		path=homepath #+"{sample}/nanoexpansion/"
+		path=path #+"{sample}/nanoexpansion/"
 	output:
-		homepath+"{sample}/nanoexpansion/{sample}_{disease}_{gene}.txt"
+		path+"{sample}/nanoexpansion/{sample}_{disease}_{gene}.txt"
 	params:
 		motif=lambda wildcards: config["motif"],
 		interruption=lambda wildcards: config["interruption"],
