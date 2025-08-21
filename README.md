@@ -88,8 +88,6 @@ python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed 
 5. Extract fields of interest
     ```bash
     SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU REPID VARID STR_STATUS > <sample>_rep_annot.tsv
-    ```
-    ```bash
     SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > <sample>_rep_plot.tsv
     ```
 
