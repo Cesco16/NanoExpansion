@@ -167,7 +167,8 @@ The DAG of the snakemake pipeline is shown below:
 </div>
 
 ### N.B.
-Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
+* Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
+* Always check the start-end columns in files .tsv and .bed: they must be the start-end position of the repeat expansion region (manually change them if needed)
 
 
 ## License
