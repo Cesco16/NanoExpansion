@@ -65,14 +65,14 @@ python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed 
 3. Index .bam STR file and keep only reads with STR of interest
 
     ```bash
-    samtools view -b -h -o <sample>_str_regions.bam -L <gene>_filter.bed <sample>_sort.bam
-    samtools index <sample>_str_regions.bam
+    samtools view -b -h -o <sample>_roi.bam -L <gene>_filter.bed <sample>_sort.bam
+    samtools index <sample>_roi.bam
     ```
     ```bash
-    tail -n +3 <sample>_straglr.tsv | cut -f 6 > <sample>_reads_to_filter.txt
+    tail -n +3 <sample>_straglr.tsv | cut -f 6 > <sample>_filtered_reads.txt
     ```
     ```bash
-    samtools view --write-index -N <sample>_reads_to_filter.txt -o <sample>_str_reads.bam <sample>_str_regions.bam
+    samtools view --write-index -N <sample>_filtered_reads.txt -o <sample>_reads.bam <sample>_roi.bam
     ```
 
 4. Annotate .vcf using Stranger
@@ -87,8 +87,8 @@ python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed 
 
 5. Extract fields of interest
     ```bash
-    SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU REPID VARID STR_STATUS > <sample>_rep_annot.tsv
-    SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > <sample>_rep_plot.tsv
+    SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS ALT FILTER REF RL RU REPID VARID STR_STATUS > <sample>_ann.tsv
+    SnpSift extractFields <sample>_straglr_annot.vcf.gz CHROM POS DisplayRU STR_NORMAL_MAX STR_PATHOLOGIC_MIN VARID Disease > <sample>_plt.tsv
     ```
 
 N.B. Please, do not change the filenames created in steps 3-5.
