@@ -3,15 +3,15 @@ channels:
   - bioconda
   - conda-forge
 dependencies:
-  - stranger
-  - tabix
-  - vcflib
-  - samtools
-  - snpsift
-  - pysam
-  - matplotlib
-  - pandas
-  - numpy
-  - scikit-learn
-  - argparse
-  - snakemake
+  - stranger==0.9.5
+  - tabix==1.11
+  - vcflib==1.0.14
+  - samtools==1.22.1
+  - snpsift==5.2
+  - pysam==0.23.3
+  - matplotlib==3.10.5
+  - pandas==2.3.1
+  - numpy==2.2.6
+  - scikit-learn==1.7.1
+  - argparse==1.4.0
+  - snakemake==7.32.4
