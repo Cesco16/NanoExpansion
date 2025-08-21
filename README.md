@@ -185,7 +185,7 @@ If you use NanoExpansion in your research or work, please cite the GitHub reposi
 @misc{NanoExpansion
 author = {Francesco Casadei},
 title = {NanoExpansion: a tool for the characterization of Repeat Expansion Pattern in Nanopore sequencing samples},
-year = {2024},
+year = {2025},
 publisher = {GitHub},
 journal = {GitHub repository},
 howpublished = {\url{https://github.com/Cesco16/NanoExpansion)}
