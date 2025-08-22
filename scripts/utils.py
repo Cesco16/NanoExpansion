@@ -101,7 +101,6 @@ def extract_sequences(bam, merged_tsv, repeat_motif):
                             ]
                     else:
                         continue
-                #print(str_sequence)
                 
                 # Detecting the RU's and interruptions
                     repeat_unit_indexes = []
@@ -147,7 +146,6 @@ def extract_sequences(bam, merged_tsv, repeat_motif):
                             "interruption_indexes": interruption_indexes
                         }
                     })
-                #print(str_seq_dict, '\n')
         input_bam.close()
 
     str_seq_json = json.dumps(str_seq_dict, indent=4)
@@ -308,7 +306,7 @@ def extract_interruption_sequences(str_dataset, motif):
     return str_seq_json
 
 def create_plot_interruption_files(str_seq_json, sample, path):
-    """Extract info relevant for plots from JSON and save as CSV."""
+    """Extract info relevant for plots from JSON and save to CSV."""
     data = json.loads(str_seq_json)
     a = 0
     DF = pd.DataFrame([],columns=[
@@ -336,7 +334,6 @@ def create_plot_interruption_files(str_seq_json, sample, path):
                 "Interruption": read_details["interruption_indexes"]
             }.items():
                 for index in indexes:
-                    #print(index)
                     rows.append([
                         str_identifier,
                         #str_data['chr'],
