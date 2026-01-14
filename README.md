@@ -1,4 +1,5 @@
 ![](images/nanoexpansion.png)
+<img src="images/nanoexpansion.png" alt="Descrizione dell'immagine" width="400" />
 # NanoExpansion: a tool for the characterization of Repeat Expansion Patterns in Nanopore sequencing samples
 
 NanoExpansion is a python software for the extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
