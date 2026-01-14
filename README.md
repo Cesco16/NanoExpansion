@@ -1,5 +1,5 @@
 
-<img src="images/nanoexpansion.png" alt="Descrizione dell'immagine" width="200" />
+<img src="images/nanoexpansion.png" alt="Descrizione dell'immagine" width="100" />
 
 # NanoExpansion: a tool for the characterization of Repeat Expansion Patterns in Nanopore sequencing samples
 
