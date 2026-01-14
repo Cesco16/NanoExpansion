@@ -1,14 +1,3 @@
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 20px;">
-    <img src="images/nanoexpansion.png" alt="Logo del progetto" width="150" />
-  </div>
-  <div>
-    <h1 style="margin: 0;">NanoExpansion: a tool for the characterization of Repeat Expansion Patterns in Nanopore sequencing samples</h1>
-    <p style="margin: 0;">Un progetto fantastico per risolvere problemi complessi.</p>
-  </div>
-</div>
-
-
 <img src="images/nanoexpansion.png" alt="Descrizione dell'immagine" width="100" />
 
 # NanoExpansion: a tool for the characterization of Repeat Expansion Patterns in Nanopore sequencing samples
