@@ -1,0 +1,18 @@
+##fileformat=VCFv4.2
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant">
+##INFO=<ID=REF,Number=1,Type=Integer,Description="Reference copy number">
+##INFO=<ID=RL,Number=1,Type=Integer,Description="Repeat length">
+##INFO=<ID=RU,Number=1,Type=String,Description="Repeat unit">
+##INFO=<ID=REPID,Number=1,Type=String,Description="Repeat locus ID">
+##INFO=<ID=VARID,Number=1,Type=String,Description="Variant ID">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=SO,Number=1,Type=String,Description="Support observation type">
+##FORMAT=<ID=CN,Number=2,Type=String,Description="Copy numbers for alleles">
+##FORMAT=<ID=CI,Number=2,Type=String,Description="Confidence intervals">
+##FORMAT=<ID=AD_SP,Number=2,Type=String,Description="Allele depth from spanning reads">
+##FORMAT=<ID=AD_FL,Number=2,Type=String,Description="Allele depth from flanking reads">
+##FORMAT=<ID=AD_IR,Number=2,Type=String,Description="Allele depth from in-repeat reads">
+###2026-01-13_16:56:37 /home/casadei7/straglr/straglr.py --sample output_34_410_32-straglr --min_support 1 --max_str_len 10000000 nativeoutput_34_410_32_roi.bam /DATA/Reference/hg38.fa output_34_410_32-straglr
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT
+chr19	45770203	.	C	<STR1060>,<STR13>	.	PASS	SVTYPE=STR;END=45770203;REF=20;RL=60;RU=AGG;REPID=DMPK;VARID=DMPK	GT:SO:CN:CI:AD_SP:AD_FL:AD_IR	1/2:SPANNING/SPANNING:1060/13:1014-1107/12-13:2/7:0/0:0/0

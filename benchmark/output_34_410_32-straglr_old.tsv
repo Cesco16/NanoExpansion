@@ -1,0 +1,3 @@
+#2026-01-13_16:56:37 /home/casadei7/straglr/straglr.py --sample output_34_410_32-straglr --min_support 1 --max_str_len 10000000 nativeoutput_34_410_32_roi.bam /DATA/Reference/hg38.fa output_34_410_32-straglr
+#chrom	start	end	target_repeat	locus	coverage	genotype	read_name	actual_repeat	copy_number	size	read_start	strand	allele	read_status
+chr19	45770202	45770203	AGG	chr19:45770202-45770203	1	485.7(1)	0c7cdadc-6d40-4fbf-98c5-09f65ec63e0c	AGG	485.7	1457	3466	-	485.7	full
