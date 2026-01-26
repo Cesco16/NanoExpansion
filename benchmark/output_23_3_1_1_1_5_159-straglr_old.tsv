@@ -1,0 +1,3 @@
+#2026-01-14_13:32:51 /home/casadei7/straglr/straglr.py --sample output_23_3_1_1_1_5_159-straglr_old --loci /home/casadei7/NanoExpansion/STR.bed --min_support 1 nativeoutput_23_3_1_1_1_5_159_roi.bam /DATA/Reference/hg38.fa output_23_3_1_1_1_5_159-straglr_old
+#chrom	start	end	target_repeat	locus	coverage	genotype	read_name	actual_repeat	copy_number	size	read_start	strand	allele	read_status
+chr19	45770204	45770266	CAG	chr19:45770204-45770266	1	193.7(1)	0c7cdadc-6d40-4fbf-98c5-09f65ec63e0c	CAG	193.7	581	3466	-	193.7	full

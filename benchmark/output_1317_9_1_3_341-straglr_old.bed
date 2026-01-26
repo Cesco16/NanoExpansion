@@ -1,0 +1,2 @@
+#chrom	start	end	repeat_unit	allele1:size	allele1:copy_number	allele1:support	allele2:size	allele2:copy_number	allele2:support
+chr19	45770204	45770266	CAG	5013.9	1671.3	1	-	-	-
