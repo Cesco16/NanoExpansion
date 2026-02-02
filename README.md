@@ -50,8 +50,10 @@ If your version of straglr does not output the .vcf file, you can create it star
 ```bash
 python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed --vcf <sample>-straglr.vcf
 ```
--->
 ## Pre-processing
+-->
+
+## Run NanoExpansion
 
 1. Download the repository
 
@@ -176,6 +178,13 @@ The DAG of the snakemake pipeline is shown below:
   <img src="images/pipeline.png" width="500">
 </div>
 -->
+
+## Benchmark
+
+NanoExpansion functioning can be tested using the synthetically generated reads in the benchmark folder. 
+Each sample is named with the actual number of repeats in gene DMPK.
+Results from NanoExpansion must agree with them.
+NanoExpansion will fail only on sample output_25_21_58_14, since the insertion pattern falls outside the main repeated pattern (CTG).
 
 ### N.B.
 * Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
