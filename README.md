@@ -105,7 +105,7 @@ N.B. Please, do not change the filenames created in steps 3-5.
 -->
 3. Run the Snakemake pipeline
     ```bash
-   snakemake --cores 4 --config sample=output_1317_9_1_3_341 motif='CAG' interruption='CGG' ins1=2 ins2=1 gene="DMPK" disease="DM1"
+   snakemake --cores 4 --config sample=<sample> motif='CAG' interruption='CGG' ins1=2 ins2=1 gene="DMPK" disease="DM1"
     ```
 ### Options
 
