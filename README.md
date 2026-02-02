@@ -186,11 +186,11 @@ Each sample is named with the actual number of repeats in gene DMPK.
 Results from NanoExpansion must agree with them.
 NanoExpansion will fail only on sample output_14_58_21_25, since the insertion pattern falls outside the main repeated pattern (CTG).
 
-### N.B.
+### Limitations
 * Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
 * Always check the start-end columns in files .tsv and .bed: they must be the start-end position of the repeat expansion region (manually change them if needed).
-* To test the software, ask the repository owner to provide a test file (.bam and .tsv), since the size of the .bam file exceeds the github maximum limit.
-* The Snakemake pipeline will be fixed and released soon.
+* NanoExpansion can correctly detect repeated pattern only if the interruption motif entirely falls inside the main repeat motif (e.g., CTG for DM1).
+* Actually, NanoExpansion works only on DM1 and ALS samples (which are the ones knwon to have interruption patterns).
 
 
 ## License
