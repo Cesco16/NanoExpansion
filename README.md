@@ -4,7 +4,7 @@
 
 NanoExpansion is a python software for the extraction and characterization of Short Tandem Repeats (STRs) data from nanopore sequencing.
 It exploits the result from [straglr](https://github.com/bcgsc/straglr) to generate plots of the expansion site of the region of interest (e.g. gene *DMPK* for DM1) and to return the compact expansion pattern string.
-This software reuses some ideas that can be found in [EPI2ME wf-human-variation](https://github.com/epi2me-labs/wf-human-variation).
+This software reuses some ideas that can be found in [EPI2ME wf-human-variation](https://github.com/epi2me-labs/wf-human-variation). It implements a recursive search of motifs of interest, specified by the user (using prior biological information).
 
 ## Requirements
 
