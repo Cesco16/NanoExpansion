@@ -6,11 +6,13 @@ parser = argparse.ArgumentParser(description='missing_data',formatter_class=argp
 parser.add_argument('--tsv')
 parser.add_argument('--bed')
 parser.add_argument('--vcf')
+parser.add_argument('--gene')
 args = parser.parse_args()
 
 input_tsv = args.tsv
 input_bed = args.bed
 output_vcf = args.vcf
+gene = args.gene
 
 def create_vcf_with_custom_entry(tsv_path, bed_path, vcf_path):
     # Check if input files exist
@@ -62,13 +64,13 @@ def create_vcf_with_custom_entry(tsv_path, bed_path, vcf_path):
         # Process TSV rows and create a custom VCF entry
         for row in tsv_reader:
             chrom = row['#chrom']
-            start = int(row['start']) + 1  # Adjust POS to be 1-based
+            start = int(row['start']) #+ 1  # Adjust POS to be 1-based
             end = row['end']
-            repeat_unit = row['target_repeat']
+            repeat_unit = row['target_repeat']#['repeat_unit']#['target_repeat']
             ref_copy_number = 20  # Example reference copy number
             repeat_length = 60  # Example repeat length
-            rep_id = "DMPK"
-            var_id = "DMPK"
+            rep_id = str(gene) #"DMPK"
+            var_id = str(gene) #"DMPK"
             allele1_cn = 1060  # Example allele copy number
             allele2_cn = 13
             allele1_ci = "1014-1107"
@@ -140,7 +142,7 @@ def create_vcf_with_dynamic_info(tsv_path, bed_path, vcf_path):
         # Process TSV rows and create a VCF entry
         for row in tsv_reader:
             chrom = row['#chrom']
-            start = int(row['start']) + 1  # Adjust POS to be 1-based
+            start = int(row['start']) #+ 1  # Adjust POS to be 1-based
             end = row['end']
             repeat_unit = row['target_repeat']
             ref_copy_number = row.get('copy_number', 20)  # Use copy number or default value
