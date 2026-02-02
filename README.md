@@ -24,8 +24,8 @@ sample/
     ├── <sample>-straglr_old.tsv
     ├── <sample>-straglr_old.bed    
     ├── <sample>-straglr_old.vcf    
-    ├── <sample>.roi.bam    
-    ├── <sample>.roi.bam.bai    
+    ├── <sample>_roi.bam    
+    ├── <sample>_roi.bam.bai    
     ├── variant_catalog_hg38.json    
     ├── <gene>_filter.bed    
     └── str_repeats.bed
