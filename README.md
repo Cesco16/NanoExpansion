@@ -37,6 +37,8 @@ Depending on the straglr version used, you would need to transform the output .t
 
 'chrom', 'start', 'end', 'repeat_unit', 'genotype', 'read', 'copy_number', 'size', 'read_start', 'strand', 'allele'
 
+If your .tsv does not satisfy this requirement, the snakemake pipeline will handle this by transforming .tsv and .vcf.
+<!--
 If your .tsv file does not satisfy this requirement, you should first run
 
 ```bash
@@ -48,7 +50,7 @@ If your version of straglr does not output the .vcf file, you can create it star
 ```bash
 python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed --vcf <sample>-straglr.vcf
 ```
-
+-->
 ## Pre-processing
 
 1. Download the repository
