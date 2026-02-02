@@ -11,7 +11,7 @@ This software reuses some ideas that can be found in [EPI2ME wf-human-variation]
 Some files are needed in order to run NanoExpansion:
 
 * a sorted and indexed .bam file of the sample of interest
-* .tsv and .vcf (optional) output files from straglr
+* .tsv, .bed and .vcf output files from straglr
 * the catalogue of STR annotation for Stranger
 * a .bed file with the region and the motif of expansion
 
@@ -21,10 +21,11 @@ Moreover, the folder structure must be the following
 sample/
 │
 ├── nanoexpansion/
-    ├── <sample>-straglr.tsv
-    ├── <sample>-straglr.vcf    
-    ├── <sample>.sort.bam    
-    ├── <sample>.sort.bam.bai    
+    ├── <sample>-straglr_old.tsv
+    ├── <sample>-straglr_old.bed    
+    ├── <sample>-straglr_old.vcf    
+    ├── <sample>.roi.bam    
+    ├── <sample>.roi.bam.bai    
     ├── variant_catalog_hg38.json    
     ├── <gene>_filter.bed    
     └── str_repeats.bed
