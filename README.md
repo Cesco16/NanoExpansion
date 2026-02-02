@@ -147,14 +147,14 @@ The numbers in the plots represents the number of nucleotides in each region. Th
 <!--
 ![Example of wild-type allele in gene *DMPK*](images/str_eg2.PNG)
 -->
-![Example of wild-type allele in gene *DMPK*](images/wildtype.PNG)
+![Example of wild-type allele in gene *DMPK*](images/wildtype.png)
 
 and also the mutated reads. Here an example of an expanded read, that shows a TTG interruption pattern:
 
 <!--
 ![Example of STR with interruption pattern in gene *DMPK*](images/STR_eg.PNG)
 -->
-![Example of STR with interruption pattern in gene *DMPK*](images/expanded.PNG)
+![Example of STR with interruption pattern in gene *DMPK*](images/expanded.png)
 
 Finally, NanoExpansion returns the complete characterization of repeat patterns in all the available reads:
 
