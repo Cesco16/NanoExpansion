@@ -64,7 +64,7 @@ python create_vcf_file.py --tsv <sample>-straglr.tsv --bed <sample>-straglr.bed 
     conda env create -f requirements.yaml
     conda activate nanoexpansion
     ```
-
+<!--
 3. Index .bam STR file and keep only reads with STR of interest
 
     ```bash
@@ -102,7 +102,11 @@ N.B. Please, do not change the filenames created in steps 3-5.
     ```bash
     python NanoExpansion.py --sample <sample> --repeat CAG --interruption CAA --path /path/to/sample/nanoexpansion/
     ```
-
+-->
+3. Run the Snakemake pipeline
+    ```bash
+   snakemake --cores 4 --config sample=output_1317_9_1_3_341 motif='CAG' interruption='CGG' ins1=2 ins2=1 gene="DMPK" disease="DM1"
+    ```
 ### Options
 
 | Option                  | Description                                                                               |
