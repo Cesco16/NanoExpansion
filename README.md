@@ -184,7 +184,7 @@ The DAG of the snakemake pipeline is shown below:
 NanoExpansion functioning can be tested using the synthetically generated reads in the benchmark folder. 
 Each sample is named with the actual number of repeats in gene DMPK.
 Results from NanoExpansion must agree with them.
-NanoExpansion will fail only on sample output_25_21_58_14, since the insertion pattern falls outside the main repeated pattern (CTG).
+NanoExpansion will fail only on sample output_14_58_21_25, since the insertion pattern falls outside the main repeated pattern (CTG).
 
 ### N.B.
 * Actually, NanoExpansion works only with hg38 genome reference. The extension to T2T HS1 reference will be released soon.
