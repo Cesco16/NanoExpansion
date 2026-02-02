@@ -144,14 +144,33 @@ Here an example of NanoExpansion applied to a patient affected by Mytonic Dystro
 Thanks to NanoExpansion, it is possible to characterize the wild-type and the mutated allele.
 The numbers in the plots represents the number of nucleotides in each region. The number of repeats is obtained dividing those numbers by the length of the repeat motif (in this case, 3).
 
+<!--
 ![Example of wild-type allele in gene *DMPK*](images/str_eg2.PNG)
+-->
+![Example of wild-type allele in gene *DMPK*](images/wildtype.PNG)
 
 and also the mutated reads. Here an example of an expanded read, that shows a TTG interruption pattern:
 
+<!--
 ![Example of STR with interruption pattern in gene *DMPK*](images/STR_eg.PNG)
+-->
+![Example of STR with interruption pattern in gene *DMPK*](images/expanded.PNG)
 
 Finally, NanoExpansion returns the complete characterization of repeat patterns in all the available reads:
 
+```
+4f5fb621-ed87-45c4-84f2-8d6b5794e655: (CTG)5
+822e5d7b-a2c2-4290-aeb9-1759c1d65276: (CTG)4
+79ea0cda-7e44-4ea1-aaac-1d943b29bdf4: (CTG)5
+10b08737-492e-4c80-86ee-5f2039fd069d: (CTG)37(CTC)252(CTG)35
+7b97eb27-ef56-413b-a422-ccce2abea0d3: (CTG)296(CTC)152(CTG)61
+3e04399c-f889-453e-bd32-4c26e0ece28b: (CTG)558
+6c779360-4d9d-444e-a8b4-fcd37c65d339: (CTG)5
+bc0a2b2a-e11b-4242-aed1-80ca1a1400e8: (CTG)5
+a25cb320-6040-476c-b2ef-c490ab2b599b: (CTG)5
+```
+
+<!--
 ```
 1145b1e2-58bb-433c-afa1-939a27d713f3 :  (CTG)8
 fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CTG)12
@@ -165,7 +184,7 @@ fddbf9a9-73b1-4bfb-bab8-4e386dad1720 :  (CTG)12
 8ca91fb6-e90c-4fde-828d-4d9df868ae6a :  (CTG)12
 fa9331e7-441a-4d13-bace-b6b2c5e11a40 :  (CTG)69(CCGCCG)(CTG)35(CCGCCGCCG)(CTG)22(TTG)118(TCG)(TTG)31(TCG)(TTG)123(CTG)118(CCGCCCG)(CTG)198
 ```
-
+-->
 <!--
 ## Snakemake
 
