@@ -123,7 +123,6 @@ N.B. Please, do not change the filenames created in steps 3-5.
 | `ins2 <INT>`            | Threshold for correction of interruption repeat motif. Default is 1.                      |
 | `gene <STR>`            | Gene with the expanded motif. Default is `DMPK`.                                          |
 | `disease <STR>`         | Disease corresponding to the main motif. Default is `DM1`                                 |
-| `--help`                | Show the help message and exit.                                                           |
 
 <!--
 ### Options
