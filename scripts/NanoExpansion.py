@@ -8,9 +8,6 @@ import argparse
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
-#from bokeh.models import BoxZoomTool, ColumnDataSource, HoverTool
-#from bokeh.models import PanTool, Range1d, ResetTool, WheelZoomTool
-#from dominate.tags import h3, p, span, table, tbody, td, th, thead, tr
 
 from utils import bed_ru_merge, extract_sequences, create_plot_input_files, extract_interruption_sequences, create_plot_interruption_files, split_interrupt_reads, draw_dna_gene, complementary_reverse
 
@@ -31,67 +28,44 @@ path = args.path
 insertion_threshold = int(args.ins1)
 ins_thresh = int(args.ins2)
 
-## Global variables
-#sample = 'vac06122023'#'native9411'#'native13204'#'native10498'
-#repeat_motif = 'CAG' #'TAAAA'#'CAG'
-#interrupt_motif = 'CAA' #'TGGAA'#'GAG'# 'GAG'
-
 rep_length = len(repeat_motif)
 int_length = len(interrupt_motif)
-print(int_length)
-print(rep_length)
-#path = "/home/PERSONALE/francesco.casadei20/GridIon/" #path where bam and vcf files are saved
 
 ## Import straglr tsv file
 bd = pd.read_csv(path  + '/' +  sample + '/nanoexpansion/'+ sample + '-straglr_old.bed', sep="\t", header=0)
 pd_straglr = pd.read_csv(path  + '/' +  sample + '/nanoexpansion/'+ sample + '-straglr.tsv', sep="\t", header=1)
-#print(pd_straglr)
-#print(bd)
 ## Import stranger annotated file
 pd_stranger = pd.read_csv(path + '/' + sample + '/nanoexpansion/native'  + sample + '_rep_plot.tsv', sep="\t", header=0)
 pd_stranger['POS'] = pd_straglr['start']
-#pd_straglr['end'] = bd['end']
-#print(pd_stranger)
 ## Merge straglr and stranger files
 merged = pd.merge(pd_straglr, pd_stranger, left_on='start', right_on='POS')
-#print(pd_straglr)
-#print(pd_stranger)
-#print(merged)
 ## Merging BED RU info
 merged = bed_ru_merge(merged, path + '/'  + 'wf_str_repeats.bed')
-#print(merged)
-#merged.to_csv(path + '/'  + 'merged.csv')
 ## Extract sequences information as a json file
 str_seq_json = extract_sequences(path + '/' +  sample + '/nanoexpansion/native' + sample + '_str_reads.bam', merged, repeat_motif)
 ## Extract relevant information for plot
-#print(str_seq_json)
 str_identifier = create_plot_input_files(str_seq_json, sample, path)
-#print(str_identifier)
-#savepath = '/data/re-basecalled/'+sample+'/'
 ## Create a list with all the STR fragments
 ## Import the created plot .csv file
 
 plot_file = pd.read_csv(path + '/' + sample + '/nanoexpansion'  +  f"/{str_identifier}_str-content.csv")
-#print(plot_file)
 ## Create the list
 read_ids = plot_file['read_id'].unique()
-#print(read_ids)
-#read_ids = [read_ids[1], read_ids[3]]# [read_ids[0], read_ids[2], read_ids[9]]
+
 STR = []
-for r in read_ids:#[2:]:#[4:]:
-    #print(r)
+for r in read_ids:
+
     data = plot_file[plot_file['read_id'] == r]
     data = data.sort_values(by='start')
-    #print('DATA: ', data)
-    #print(data)
+
     rep_counter = 1
     int_counter = 0
     string_sequence = []
-    #print(len(data[data['type']=='Repeat']))
+
     reps = data[data['type']=='Repeat']
-    #print(reps)
+
     inter = data[data['type']=='Interruption']
-    #print(inter)
+
     # --- CASE: single repeat only ---
     if len(reps) == 1:
         string_sequence.append((reps.iloc[0]['sequence'], rep_length))
@@ -137,17 +111,14 @@ for r in read_ids:#[2:]:#[4:]:
     STR.append(string_sequence)
 
 ## Remove very small insertions (<=3)
-print(STR)
-#insertion_threshold = 3
+
 
 for k in np.arange(0, len(STR),1):
     removes = []
     for j in np.arange(0, len(STR[k]), 1):
-        #print(j,k)
-        #print(STR[k][j][1])
-        if STR[k][j][1] <= insertion_threshold:          #3 #STR[k][j][0] != MOTIF and 
-            #print(j)
-            #print(STR[k][j][1])
+
+        if STR[k][j][1] <= insertion_threshold: 
+
             removes.append(j)
     for i in sorted(removes, reverse=True):
         del STR[k][i]
@@ -204,8 +175,7 @@ for i in np.arange(0, len(compact_STR), 1):
 repeat_unit = interrupt_motif #'GAG'
 repeat_unit_indexes = []
 interruption_indexes = []
-#print(compact_STR)
-#print(df_STR)
+
 
 if not df_STR[df_STR['type'] == 'Interruption'].empty:
     str_sequence = df_STR[df_STR['type']=='Interruption'].iloc[0]['sequence']
@@ -215,21 +185,19 @@ if not df_STR[df_STR['type'] == 'Interruption'].empty:
     interrupt_json = extract_interruption_sequences(df_STR, motif=interrupt_motif)
 
     create_plot_interruption_files(interrupt_json, sample, path)
-    #split_interrupt_reads(path + sample + "/df_interrupt.csv", sample)
     split_interrupt_reads(sample, path)
 
     ## Create a list of lists with interruptions fragments
     read_ids = plot_file['read_id'].unique()
-    #print(read_ids)
     INTR = []
-    for r in read_ids:#[0:3]:
+    for r in read_ids:
         if os.path.exists(path + '/' + sample + '/nanoexpansion' + f"/{r}_interrupt.csv"):
             data_ = pd.read_csv(path + '/' + sample + '/nanoexpansion' + f"/{r}_interrupt.csv")
         else:
             data_ = pd.DataFrame()
         strs = []
         intr = []
-        #print(data_)
+
         for i in np.arange(0, len(data_),1):
             strs.append(data_['str_identifier'][i])
         for a in np.unique(strs):
@@ -240,8 +208,7 @@ if not df_STR[df_STR['type'] == 'Interruption'].empty:
             string_sequence = []
             reps = data[data['type']=='Repeat']
             inter = data[data['type']=='Interruption']
-            #print(reps)
-            #print(len(reps))
+
             if len(reps) > 1:
                 if data['type'].iloc[0] == 'Interruption':
                     string_sequence.append((inter.iloc[int_counter]['sequence'],
@@ -267,39 +234,37 @@ if not df_STR[df_STR['type'] == 'Interruption'].empty:
                         else:
                             rep_counter+=1
                 string_sequence.append((reps.iloc[i]['sequence'],rep_counter*int_length)) #*3
-        #if reps.iloc[i]['end'] < inter.iloc[int_counter-1]['end']:
                 if int_counter < len(inter):
                     string_sequence.append((inter.iloc[int_counter]['sequence'],
                                       len(inter.iloc[int_counter]['sequence'])))
                 intr.append(string_sequence)
-                #print(intr)
+
             else:
-                #print(len(data))
+
                 if len(data) == 1:
-                    #print(a)
+
                     string_sequence.append((data.iloc[0]['sequence'],
                                       len(data.iloc[0]['sequence'])))
                     intr.append(string_sequence)
                 elif len(data) > 1:
-                        #print(a)
+
                         string_sequence.append((data.iloc[0]['sequence'],
                                       len(data.iloc[0]['sequence'])))
                         string_sequence.append((data.iloc[1]['sequence'],
                                       len(data.iloc[1]['sequence'])))
                         intr.append(string_sequence)
-                        #print(intr)
+
         INTR.append(intr)
 
     ## Removes very small insertions (<=3)
 
-    #ins_thresh = 1
+
 
     for f in np.arange(0, len(INTR),1):
         for k in np.arange(0, len(INTR[f]),1):
             removes = []
             for j in np.arange(0, len(INTR[f][k]), 1):
-            #print(j,k)
-            #print(STR[k][j][1])
+
                 if INTR[f][k][j][1] <= ins_thresh: #1
                 #print(j)
                     removes.append(j)
@@ -309,7 +274,7 @@ if not df_STR[df_STR['type'] == 'Interruption'].empty:
     ## sum up new compact INTR
     MOTIF = interrupt_motif #'GAG'#merged['repeat_unit'][0]
     compact_INTR = []
-    #print(INTR)
+
     for f in np.arange(0, len(INTR),1):
         compact_intr = []
         for k in np.arange(0, len(INTR[f]),1):
@@ -349,7 +314,6 @@ if not df_STR[df_STR['type'] == 'Interruption'].empty:
             if compact_STR[i][j][2] == 'Repeat':
                 comp_str.append(compact_STR[i][j])
             elif compact_STR[i][j][2] == 'Interruption':
-                #print(compact_INTR)
                 for f in np.arange(0, len(compact_INTR[i][k]), 1):
                     comp_str.append(compact_INTR[i][k][f])
                 k += 1
@@ -409,10 +373,7 @@ if not df_STR[df_STR['type'] == 'Interruption'].empty:
         print(read_ids[k], ': ', cstr)
         stt = str(read_ids[k]) + ': ' + str(cstr) + '\n'
         text_file.write(stt)
-        #l = int(l)
-        #l = str(l).encode("utf-64")#.decode("utf-8")
-        #print(l)
-        #cstr += '('+ CSTR.iloc[i]['Motif'] + r'){}'.format(l)
+
     text_file.close()
 
 else:
@@ -434,8 +395,7 @@ else:
         for i in np.arange(0, len(gene_sections_lengths),1):
             if CSTR['Type'][i] =='Repeat':
                 section_colors.append('#E69F00')
-            #elif CSTR['Type'][i] =='Interruption':
-            #    section_colors.append('#0072B2')
+
             else:
                 section_colors.append('#4D4D4D')
 
@@ -469,8 +429,5 @@ else:
         print(read_ids[k], ': ', cstr)
         stt = str(read_ids[k]) + ': ' + str(cstr) + '\n'
         text_file.write(stt)
-        # l = int(l)
-        # l = str(l).encode("utf-64")#.decode("utf-8")
-        # print(l)
-        # cstr += '('+ CSTR.iloc[i]['Motif'] + r'){}'.format(l)
+
     text_file.close()
