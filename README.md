@@ -242,6 +242,6 @@ title = {NanoExpansion: a tool for the characterization of Repeat Expansion Patt
 year = {2026},
 publisher = {GitHub},
 journal = {GitHub repository},
-howpublished = {\url{https://github.com/Cesco16/NanoExpansion)}
+howpublished = {\url{https://github.com/Cesco16/NanoExpansion}}
 }
 ```
