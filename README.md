@@ -15,7 +15,7 @@ Some files are needed in order to run NanoExpansion:
 * the catalogue of STR annotation for Stranger
 * a .bed file with the region and the motif of expansion
 
-Moreover, the folder structure must be the following
+Moreover, the folder structure must be the following:
 
 ```
 sample/
