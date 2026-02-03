@@ -1,11 +1,10 @@
 import os
 import yaml
 
-homepath = '/home/casadei7/'#benchmark_nanoexpansion/'
-refpath = '/home/casadei7/Reference/hg38.fa'
-nanopath = '/home/casadei7/NanoExpansion/'
-gridpath = '/home/casadei7/'
-path = '/home/casadei7/'
+homepath = './'
+nanopath = './'
+gridpath = './annotation'
+path = './'
 
 ruleorder: tail > nanoexpansion
 
@@ -20,21 +19,6 @@ rule all:
 		expand(homepath+"{sample}/nanoexpansion/"+"native{sample}_rep_plot.tsv", sample=config["sample"]),
 		expand(homepath+"{sample}/nanoexpansion/{sample}_{disease}_{gene}.txt", sample=config["sample"], disease=config["disease"], gene=config["gene"])
 
-#rule straglr:
-#	  input:
-#		  loci=nanopath+"bed/bed_filter.bed",
-#		  bam=homepath+"{sample}/{sample}"+"-dorado.pass.bam",
-#		  ref=refpath,
-#      straglrpath = path + "straglr/straglr.py"
-#	  output:
-#		  tsv=homepath+"{sample}/nanoexpansion/"+"{sample}-straglr_old.tsv"
-#	  log:
-#		  "logs/straglr/{sample}.log"
-#	  conda:
-#		  "/home/PERSONALE/francesco.casadei20/straglr.yaml"
-#	  message: ">> {wildcards.sample} : STR estimate with stralgr"
-#	  shell:
-#		  "python  straglrpath --loci {input.loci} --sample {wildcards.sample} --max_cov 40000 {input.bam} {input.ref} --tsv {output.tsv}"
 
 rule tsv_to_vcf:
 	input:
