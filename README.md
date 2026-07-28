@@ -170,7 +170,7 @@ For each run, the following files are generated in `--outdir`:
 - `sequential_locus_structure.png` — length distribution with GMM peaks and, when available, methylation profile.
 
 <div align="center">
-<img src="example_output/sequential_locus_structure.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/sequential_locus_structure.png" alt="Descrizione dell'immagine" width="1000" />
 </div>
 
 
