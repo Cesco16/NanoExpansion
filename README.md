@@ -156,6 +156,13 @@ For each run, the following files are generated in `--outdir`:
 <img src="example_output/Allele2_97689537-111d-43bc-bf53-9a9a3d40de0f_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
+- `sequential_locus_structure.png` — length distribution with GMM peaks and, when available, methylation profile.
+
+<div align="center">
+<img src="example_output/sequential_locus_structure.png" alt="Descrizione dell'immagine" width="700" />
+</div>
+
+
 - `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
 
 <div align="center">
