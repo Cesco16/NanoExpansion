@@ -1,3 +1,5 @@
+<img src="images/nanoexpansion.png" alt="Descrizione dell'immagine" width="100" />
+
 # NanoExpansion (NanoExp)
 
 **Characterization of pathogenic short tandem repeat (STR) expansions from Oxford Nanopore long-read sequencing data.**
