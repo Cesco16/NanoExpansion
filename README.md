@@ -150,11 +150,11 @@ For each run, the following files are generated in `--outdir`:
 - `AlleleN_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
 <img src="example_output/nanoexpansion.png" alt="Descrizione dell'immagine" width="100" />
 - `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
-<img src="example_output/gmm_dual_methylation.png" alt="Descrizione dell'immagine" width="300" />
+<img src="example_output/gmm_dual_methylation.png" alt="Descrizione dell'immagine" width="500" />
 - `EPIGENETIC_WATERFALL_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
-<img src="example_output/EPIGENETIC_WATERFALL_13204_DMPK.png" alt="Descrizione dell'immagine" width="300" />
+<img src="example_output/EPIGENETIC_WATERFALL_13204_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 - `EPIGENETIC_JOINT_MAP_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
-<img src="example_output/EPIGENETIC_JOINT_MAP_13204_DMPK.png" alt="Descrizione dell'immagine" width="300" />
+<img src="example_output/EPIGENETIC_JOINT_MAP_13204_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 
 ## Repository structure
 
