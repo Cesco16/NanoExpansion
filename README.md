@@ -147,15 +147,14 @@ For each run, the following files are generated in `--outdir`:
 - `ADVANCED_REPORT_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
 
 <div align="center">
-  <iframe src="example_output/ADVANCED_REPORT_13204_DMPK.html" width="600" height="400" frameborder="0"></iframe>
+<img src="example_output/ADVANCED_REPORT_13204_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `CLINICAL_REPORT_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
 
 <div align="center">
-  <iframe src="example_output/CLINICAL_REPORT_13204_DMPK.html" width="600" height="400" frameborder="0"></iframe>
+<img src="example_output/CLINICAL_REPORT_13204_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
-
 
 - `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
 - `<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
