@@ -1,6 +1,6 @@
 <img src="images/nanoexpansion.png" alt="Descrizione dell'immagine" width="100" />
 
-# NanoExpansion (NanoExp)
+# NanoExpansion (NanoExp): a tool for the characterization of Repeat Expansion Patterns in Nanopore sequencing samples
 
 **Characterization of pathogenic short tandem repeat (STR) expansions from Oxford Nanopore long-read sequencing data.**
 
