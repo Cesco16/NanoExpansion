@@ -153,7 +153,9 @@ For each run, the following files are generated in `--outdir`:
 - `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
 <img src="example_output/gmm_dual_methylation.png" alt="Descrizione dell'immagine" width="500" />
 - `EPIGENETIC_WATERFALL_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
+<div align="center">
 <img src="example_output/EPIGENETIC_WATERFALL_13204_DMPK.png" alt="Descrizione dell'immagine" width="500" />
+</div>
 - `EPIGENETIC_JOINT_MAP_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
 <img src="example_output/EPIGENETIC_JOINT_MAP_13204_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 
