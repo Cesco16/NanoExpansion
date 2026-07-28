@@ -158,13 +158,13 @@ For each run, the following files are generated in `--outdir`:
 
 
 - `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
-- `AlleleN_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
+- `<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
 
 <div align="center">
-<img src="example_output/Allele1_fec85828-b0a0-412d-b228-653855ad3298_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/wildtype.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 <div align="center">
-<img src="example_output/Allele2_97689537-111d-43bc-bf53-9a9a3d40de0f_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/expanded.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `sequential_locus_structure.png` — length distribution with GMM peaks and, when available, methylation profile.
