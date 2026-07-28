@@ -144,16 +144,16 @@ New loci can be added by extending the `STR_REFERENCE_DB` dictionary in `utils.p
 
 For each run, the following files are generated in `--outdir`:
 
-- `REPORT_AVANZATO_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
+- `ADVANCED_REPORT_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
 
 <div align="center">
-  <iframe src="example_output/REPORT_AVANZATO_13204_DMPK.html" width="600" height="400" frameborder="0"></iframe>
+  <iframe src="example_output/ADVANCED_REPORT_13204_DMPK.html" width="600" height="400" frameborder="0"></iframe>
 </div>
 
-- `REPORT_CLINICO_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
+- `CLINICAL_REPORT_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
 
 <div align="center">
-  <iframe src="example_output/REPORT_CLINICO_13204_DMPK.html" width="600" height="400" frameborder="0"></iframe>
+  <iframe src="example_output/CLINICAL_REPORT_13204_DMPK.html" width="600" height="400" frameborder="0"></iframe>
 </div>
 
 
