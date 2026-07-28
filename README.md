@@ -166,9 +166,15 @@ For each run, the following files are generated in `--outdir`:
 - Methylation analysis requires base-modification tags (`MM`/`ML`) in the BAM (typically produced by basecalling with modification-aware models, e.g. Dorado/Guppy with 5mC/5hmC models).
 - The normal/pathogenic thresholds included in the database are indicative and derived from the literature; they do not replace clinical interpretation by a qualified professional.
 
+- ## Disclaimer
+
+- 
+- 
+
 ## Citation
 
-If you use NanoExpansion in your work, please cite this repository. *(Add a reference to a publication/preprint here, if available.)*
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software under the terms of the license.
 
 ## License
 
