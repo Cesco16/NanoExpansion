@@ -150,10 +150,10 @@ For each run, the following files are generated in `--outdir`:
 - `AlleleN_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
 
 <div align="center">
-<img src="example_output/Allele1_fec85828-b0a0-412d-b228-653855ad3298_DMPK.png" alt="Descrizione dell'immagine" width="100" />
+<img src="example_output/Allele1_fec85828-b0a0-412d-b228-653855ad3298_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 <div align="center">
-<img src="example_output/Allele2_97689537-111d-43bc-bf53-9a9a3d40de0f_DMPK.png" alt="Descrizione dell'immagine" width="100" />
+<img src="example_output/Allele2_97689537-111d-43bc-bf53-9a9a3d40de0f_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
