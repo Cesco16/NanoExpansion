@@ -149,7 +149,7 @@ For each run, the following files are generated in `--outdir`:
 - `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
 - `AlleleN_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
 <img src="example_output/Allele1_fec85828-b0a0-412d-b228-653855ad3298_DMPK.png" alt="Descrizione dell'immagine" width="100" />
-<img src="example_output/Allele1_fec85828-b0a0-412d-b228-653855ad3298_DMPK.png" alt="Descrizione dell'immagine" width="100" />
+<img src="example_output/Allele2_97689537-111d-43bc-bf53-9a9a3d40de0f_DMPK.png" alt="Descrizione dell'immagine" width="100" />
 - `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
 <img src="example_output/gmm_dual_methylation.png" alt="Descrizione dell'immagine" width="500" />
 - `EPIGENETIC_WATERFALL_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
