@@ -1,0 +1,19 @@
+name: NanoExp2
+channels:
+  - bioconda
+dependencies:
+  - samtools
+  - pysam
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - bokeh
+  - scikit-learn
+  - markdown
+  - pip:
+    - edlib
+    - weasyprint
+    - pdf2image
+    - pymupdf
