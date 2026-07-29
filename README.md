@@ -69,7 +69,7 @@ Required input files:
 ## Installation
 
 ```bash
-git clone https://github.com/Cesco16/nanoexpansion.git
+git clone https://github.com/Cesco16/NanoExpansion.git
 cd nanoexpansion
 
 conda env create -f nanoexpansion.yaml
