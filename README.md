@@ -51,8 +51,8 @@ All functions are defined in [`utils.py`](utils.py); pipeline orchestration and 
 ## Requirements
 
 - Python ≥ 3.9
-- [`pysam`](https://pysam.readthedocs.io/)
-- [`edlib`](https://github.com/Martinsos/edlib)
+- `pysam`
+- `edlib`
 - `numpy`
 - `pandas`
 - `matplotlib`
@@ -69,13 +69,12 @@ Required input files:
 ## Installation
 
 ```bash
-git clone https://github.com/<org>/nanoexpansion.git
+git clone https://github.com/Cesco16/nanoexpansion.git
 cd nanoexpansion
 
-python3 -m venv venv
-source venv/bin/activate
+conda env create -f nanoexpansion.yaml
+conda activate NanoExpansion
 
-pip install pysam edlib numpy pandas matplotlib seaborn scikit-learn scipy markdown
 ```
 
 > The tool is currently run directly from source; no Bioconda/PyPI distribution is provided yet.
