@@ -143,18 +143,6 @@ New loci can be added by extending the `STR_REFERENCE_DB` dictionary in `utils.p
 
 For each run, the following files are generated in `--outdir`:
 
-- `ADVANCED_REPORT_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
-
-<div align="center">
-<img src="example_output/ADVANCED_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
-</div>
-
-- `CLINICAL_REPORT_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
-
-<div align="center">
-<img src="example_output/CLINICAL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
-</div>
-
 - `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
 - `<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
 
@@ -189,6 +177,19 @@ For each run, the following files are generated in `--outdir`:
 <div align="center">
 <img src="example_output/EPIGENETIC_JOINT_MAP_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 </div>
+
+- `ADVANCED_REPORT_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
+
+<div align="center">
+<img src="example_output/ADVANCED_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+</div>
+
+- `CLINICAL_REPORT_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
+
+<div align="center">
+<img src="example_output/CLINICAL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+</div>
+
 
 ## Repository structure
 
