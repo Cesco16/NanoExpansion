@@ -224,7 +224,16 @@ For each run, the following files are generated in `--outdir`:
 
 ## Citation
 
+If you use NanoExpansion in your research or work, please cite the GitHub repository:
 
+```
+@misc{NanoExpansion
+author = {Francesco Casadei},
+title = {NanoExpansion: a tool for the characterization of Repeat Expansion Pattern in Nanopore sequencing samples},
+year = {2026},
+publisher = {GitHub},
+journal = {GitHub repository},
+```
 
 ## License
 
