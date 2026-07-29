@@ -154,7 +154,7 @@ Benchmark examples must be run using BENCHMARK as gene locus (and adjusting the 
 
 For each run, the following files are generated in `--outdir`:
 
-- `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
+- `<sample>_<gene>_summary.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
 - `Read_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified read.
 
 <div align="center">
