@@ -50,16 +50,21 @@ All functions are defined in [`utils.py`](utils.py); pipeline orchestration and 
 
 ## Requirements
 
-- Python ≥ 3.9
+- `python==3.12`
+- `samtools`
 - `pysam`
-- `edlib`
 - `numpy`
 - `pandas`
+- `scipy`
 - `matplotlib`
 - `seaborn`
+- `bokeh`
 - `scikit-learn`
-- `scipy`
+- `weasyprint`
 - `markdown`
+- `edlib`
+- `pdf2image`
+- `pymupdf`
 
 Required input files:
 - a coordinate-sorted, indexed **BAM** file (`.bai`);
