@@ -145,7 +145,7 @@ STR_REFERENCE_DB = {
         "Coordinates_hg38": "chr14:92071009-92071060",
         "Coordinates_T2T": "chr14:86300519-86300603",
         "Epigenetic_Target": False
-    }
+    },
     "BENCHMARK": {
         "Disease": "Benchmark",
         "Inheritance": "Autosomal Dominant",
