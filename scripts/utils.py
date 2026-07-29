@@ -47,8 +47,8 @@ STR_REFERENCE_DB = {
         "Inheritance": "Autosomal Dominant",
         "Motif_Ref": "CCCCGG",
         "Strand": "reverse",
-        "Normal_Max_Repeats": 30,
-        "Pathogenic_Min_Repeats": 60,
+        "Normal_Max_Repeats": 23,
+        "Pathogenic_Min_Repeats": 30,
         "Coordinates_hg38": "chr9:27573436-27573546",
         "Coordinates_T2T": "chr9:27584065-27584155",
         "Epigenetic_Target": True,
@@ -59,7 +59,7 @@ STR_REFERENCE_DB = {
         "Inheritance": "Autosomal Recessive",
         "Motif_Ref": "GGGAA",
         "Strand": "forward",
-        "Normal_Max_Repeats": 11,
+        "Normal_Max_Repeats": 200,
         "Pathogenic_Min_Repeats": 400,
         "Coordinates_hg38": "chr4:39348424-39348485",
         "Coordinates_T2T": "chr4:39318077-39318136",
@@ -72,10 +72,10 @@ STR_REFERENCE_DB = {
         "Inheritance": "Autosomal Dominant",
         "Motif_Ref": "CAG",
         "Strand": "forward",
-        "Normal_Max_Repeats": 35,
-        "Pathogenic_Min_Repeats": 40,
+        "Normal_Max_Repeats": 26,
+        "Pathogenic_Min_Repeats": 27,
         "Coordinates_hg38": "chr4:3074877-3074933",
-        "Coordinates_T2T": "",
+        "Coordinates_T2T": "chr4:3073603-3073687",
         "Epigenetic_Target": False,
         "Interruption_Motifs": ["CAG", "CTG", "CCG", "CGG", "CAA", "TTG"],
     },
@@ -87,10 +87,65 @@ STR_REFERENCE_DB = {
         "Normal_Max_Repeats": 20,
         "Pathogenic_Min_Repeats": 50,
         "Coordinates_hg38": "chr19:45770204-45770264",
-        "Coordinates_T2T": "",
+        "Coordinates_T2T": "chr19:48597739-48597756",
         "Epigenetic_Target": False,
         "Interruption_Motifs": ["GAG", "CAC", "CCG", "CTC", "TGTG", "CT", "CA"],
     },
+    "FGF14": {
+        "Disease": "SCA27",
+        "Inheritance": "Autosomal Dominant",
+        "Motif_Ref": "GAA",
+        "Strand": "reverse",
+        "Normal_Max_Repeats": 179,
+        "Pathogenic_Min_Repeats": 180,
+        "Coordinates_hg38": "chr13:102161574-102161726",
+        "Coordinates_T2T": "chr13:101377549-101377792",
+        "Epigenetic_Target": False
+    },
+    "BEAN1": {
+        "Disease": "SCA31",
+        "Inheritance": "Autosomal Dominant",
+        "Motif_Ref": "AAAAT",
+        "Strand": "forward",
+        "Normal_Max_Repeats": 30,
+        "Pathogenic_Min_Repeats": 31,
+        "Coordinates_hg38": "chr16:66490396-66490466",
+        "Coordinates_T2T": "chr1:57245935-57245973",
+        "Epigenetic_Target": False
+    },
+    "DAB1": {
+        "Disease": "SCA37",
+        "Inheritance": "Autosomal Dominant",
+        "Motif_Ref": "AAAAT",
+        "Strand": "reverse",
+        "Normal_Max_Repeats": 20,
+        "Pathogenic_Min_Repeats": 50,
+        "Coordinates_hg38": "chr1:57367024-57367124",
+        "Coordinates_T2T": "",
+        "Epigenetic_Target": False
+    },
+    "AR": {
+        "Disease": "Kennedy disease",
+        "Inheritance": "Autosomal Dominant",
+        "Motif_Ref": "CAG",
+        "Strand": "forward",
+        "Normal_Max_Repeats": 34,
+        "Pathogenic_Min_Repeats": 38,
+        "Coordinates_hg38": "chrX:67545316-67545419",
+        "Coordinates_T2T": "chrX:65975147-65975250",
+        "Epigenetic_Target": False
+    },
+    "ATXN3": {
+        "Disease": "SCA3",
+        "Inheritance": "Autosomal Dominant",
+        "Motif_Ref": "CTG",
+        "Strand": "reverse",
+        "Normal_Max_Repeats": 44,
+        "Pathogenic_Min_Repeats": 45,
+        "Coordinates_hg38": "chr14:92071009-92071060",
+        "Coordinates_T2T": "chr14:86300519-86300603",
+        "Epigenetic_Target": False
+    }
     "BENCHMARK": {
         "Disease": "Benchmark",
         "Inheritance": "Autosomal Dominant",
@@ -958,91 +1013,6 @@ The combined statistical model with interruption tracking resolved the following
 
     return report_md
 
-'''
-def generate_advanced_diagnostic_report(gene_symbol, df_reads, peaks_summary, global_counts, sample_id="SAMPLE_TEST_ONT", path="."):
-    ref = STR_REFERENCE_DB[gene_symbol]
-    motif_len = len(ref["Motif_Ref"])
-    
-    if peaks_summary is None:
-        if df_reads is not None and not df_reads.empty:
-            median_length = df_reads["Length_bp"].median()
-            peaks_summary = [{
-                "Mean": median_length,
-                "Std": 2.0,
-                "Weight": 1.0,
-                "percentage": 100.0,
-                "count": len(df_reads),
-                "type": "Single_Allele_Fallback_LowCoverage"
-            }]
-        else:
-            peaks_summary = []
-    
-    report_md = f"# FULL DIAGNOSTIC REPORT: {gene_symbol} (Dual-Epigenetics Mode)\n"
-    report_md += f"**Sample ID:** {sample_id}\n\n"
-    report_md += "### 1. GMM Allelic Profile\n| Allele | Mean (bp) | Repeats | Status |\n| :--- | :---: | :---: | :--- |\n"
-
-    for i, peak in enumerate(peaks_summary):
-        rep = round(peak["Mean"] / motif_len, 1)
-        status = "⚠️ PATHOGENIC" if rep >= ref["Pathogenic_Min_Repeats"] else "✅ Normal"
-        suffix = " (Low Coverage)" if peak.get("type") == "Single_Allele_Fallback_LowCoverage" else ""
-        report_md += f"| Allele {i+1}{suffix} | {peak['Mean']:.1f} | **{rep}** | {status} |\n"
-    
-    m5mic = df_reads["Meth_5mC"].mean() if (df_reads is not None and not df_reads.empty) else 0.0
-    m5hmic = df_reads["Meth_5hmC"].mean() if (df_reads is not None and not df_reads.empty) else 0.0
-    m_comb = df_reads["Meth_Combined"].mean() if (df_reads is not None and not df_reads.empty) else 0.0
-    
-    report_md += f"""
----
-### 2. Methylation Characterization Profile (5mC / 5hmC)
-Direct base-modification tag analysis yields the following average values at the STR locus:
-
-* **Classical Methylation (5mC):** {m5mic:.2f}
-* **Transcriptional Hydroxymethylation (5hmC):** {m5hmic:.2f}
-* **Combined Modification Profile (5mC + 5hmC):** **{m_comb:.2f}** (Total CpG site occupancy index)
-
-### Clinical-Epigenetic Considerations:
-"""
-    if m_comb < 0.2:
-        report_md += "> 🟢 **Epigenetically Active Locus:** Low total modification levels. Open chromatin state.\n"
-    else:
-        report_md += f"> 🟡 **Significant Modification:** Locus exhibits an occupancy rate of {m_comb*100:.1f}%.\n"
-        if m5mic > m5hmic * 2:
-            report_md += "> 🔴 **5mC Skew (Total Repression):** Predominance of 5mC over 5hmC indicates stable gene silencing typical of pathogenic phenotypes.\n"
-        elif m5hmic >= m5mic:
-            report_md += "> 🔵 **5hmC Enrichment (Dynamic State):** High 5hmC levels suggest active demethylation or fine transcriptional regulation. Locus is not fully silenced.\n"
-
-    html_filename = f"ADVANCED_REPORT_{sample_id}_{gene_symbol}.html"
-    html_output_path = os.path.join(path, html_filename)
-    html_body = markdown.markdown(report_md, extensions=['tables', 'fenced_code'])
-    
-    html_template = f"""<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Advanced Report - {sample_id}</title>
-        <style>
-            body {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; margin: 40px auto; max-width: 900px; color: #2c3e50; background-color: #fbfeff; }}
-            h1 {{ color: #2c3e50; border-bottom: 3px solid #34495e; padding-bottom: 12px; margin-bottom: 20px; }}
-            h3 {{ color: #2980b9; margin-top: 30px; border-bottom: 1px solid #ecf0f1; padding-bottom: 6px; }}
-            table {{ border-collapse: collapse; width: 100%; margin: 20px 0; background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
-            th, td {{ border: 1px solid #e2e8f0; padding: 12px 15px; text-align: left; }}
-            th {{ background-color: #f8fafc; font-weight: bold; color: #475569; }}
-            tr:nth-child(even) {{ background-color: #f8fafc; }}
-            blockquote {{ background: #f8fafc; border-left: 4px solid #3b82f6; margin: 1.5em 0; padding: 15px 20px; border-radius: 0 6px 6px 0; }}
-            blockquote p {{ margin: 0; }}
-            hr {{ border: 0; border-top: 2px solid #e2e8f0; margin: 40px 0; }}
-        </style>
-    </head>
-    <body>{html_body}</body>
-    </html>"""
-    
-    with open(html_output_path, "w", encoding="utf-8") as f:
-        f.write(html_template)
-    print(f"[OK] Saved Advanced HTML Report to: {html_output_path}")
-
-    return report_md
-'''
-
 def parse_str_structure_string(complete_str_list, read_index, strand, rep_length=3, int_length=3):
     segments = complete_str_list[read_index]
     CSTR = pd.DataFrame(segments, columns=['Motif', 'Length', 'Type'])
@@ -1141,95 +1111,6 @@ def parse_str_structure_string(complete_str_list, read_index, strand, rep_length
             cstr_formula += f"({motif}){count}"
     return cstr_formula, CSTR
 
-'''
-def generate_clinical_report_with_structures(gene_symbol, df_reads, peaks_summary, 
-                                             allele_formulas, sample_id, path, database):
-    ref = database.get(gene_symbol, {"Disease": "Unknown", "Inheritance": "N/A", "Normal_Max_Repeats": 30, "Pathogenic_Min_Repeats": 60})
-    motif_len = len(ref.get("Motif_Ref", "CAG"))
-    
-    report_md = f"""# MOLECULAR DIAGNOSTIC REPORT: STR EXPANSE
-**Sample ID:** {sample_id}  |  **Algorithm:** GMM Deconvolution & Structure Tracker
----
-## 1. Genetic Locus Overview
-* **Target Gene:** `{gene_symbol}`
-* **Associated Condition:** {ref['Disease']}
-* **Inheritance:** {ref['Inheritance']}
-
-## 2. High-Resolution Allelic Profiling (GMM + STR Formula)
-The combined statistical model with interruption tracking resolved the following alleles:
-
-| Allele | Mean Length (bp) | Std Dev ($\\sigma$) | Estimated Repeat Units | Structural Formula (5' $\\rightarrow$ 3') | Clinical Status |
-| :--- | :---: | :---: | :---: | :--- | :--- |
-"""
-    
-    for i, peak in enumerate(peaks_summary):
-        rep_units = round(peak["Mean"] / motif_len, 1)
-        formula = allele_formulas.get(i, "N/A (Complex variance)")
-        
-        if rep_units >= ref["Pathogenic_Min_Repeats"]:
-            status = "⚠️ **PATHOGENIC**"
-        elif rep_units > ref["Normal_Max_Repeats"]:
-            status = "🟡 **GREY ZONE / PRE-MUTATION**"
-        else:
-            status = "✅ Normal"
-            
-        report_md += f"| **Allele {i+1}** | {peak['Mean']:.1f} | {peak['Std']:.1f} | **{rep_units}** | `{formula}` | {status} |\n"
-
-    m5c = df_reads["Meth_5mC"].mean() if "Meth_5mC" in df_reads.columns else 0
-    hm5c = df_reads["Meth_5hmC"].mean() if "Meth_5hmC" in df_reads.columns else 0
-    
-    report_md += f"""
-## 3. Epigenetic Support Profile (Dorado Native Calling)
-* **Average 5mC Level (Silencing):** {m5c:.2f}
-* **Average 5hmC Level (Active State):** {hm5c:.2f}
-"""
-
-    dma_block = analyze_differential_methylation(df_reads, peaks_summary)
-    report_md += dma_block
-    
-    wf_file = plot_epigenetic_waterfall(df_reads, gene_symbol, sample_id, path)
-    jm_file = plot_epigenetic_joint_map(df_reads, peaks_summary, gene_symbol, sample_id, path)
-    
-    report_md += "\n## 5. Integrated Graphical Appendix\n"
-    
-    if wf_file:
-        wf_name = os.path.basename(wf_file)
-        report_md += f'#### A. Single-Read Epigenetic Waterfall\n<img src="{wf_name}" width="100%" style="max-width:850px; margin:15px 0; border-radius:6px; box-shadow: 0 1px 4px rgba(0,0,0,0.15);"><br>\n'
-    if jm_file:
-        jm_name = os.path.basename(jm_file)
-        report_md += f'#### B. Joint Allelic Density Topography\n<img src="{jm_name}" width="100%" style="max-width:650px; margin:15px 0; border-radius:6px; box-shadow: 0 1px 4px rgba(0,0,0,0.15);"><br>\n'
-        
-    html_filename = f"CLINICAL_REPORT_{sample_id}_{gene_symbol}.html"
-    html_output_path = os.path.join(path, html_filename)
-    html_body = markdown.markdown(report_md, extensions=['tables', 'fenced_code'])
-    
-    html_template = f"""<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Clinical Report - {sample_id} ({gene_symbol})</title>
-        <style>
-            body {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; margin: 40px auto; max-width: 900px; color: #2c3e50; background-color: #fbfeff; }}
-            h1 {{ color: #2c3e50; border-bottom: 3px solid #34495e; padding-bottom: 12px; margin-bottom: 20px; }}
-            h2 {{ color: #2c3e50; margin-top: 35px; border-bottom: 2px solid #bdc3c7; padding-bottom: 8px; }}
-            table {{ border-collapse: collapse; width: 100%; margin: 20px 0; background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
-            th, td {{ border: 1px solid #e2e8f0; padding: 12px 15px; text-align: left; }}
-            th {{ background-color: #f8fafc; font-weight: bold; color: #475569; }}
-            tr:nth-child(even) {{ background-color: #f8fafc; }}
-            code {{ background-color: #f1f5f9; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 0.95em; }}
-            hr {{ border: 0; border-top: 2px solid #e2e8f0; margin: 40px 0; }}
-            blockquote {{ background: #f8fafc; border-left: 4px solid #3b82f6; margin: 1.5em 0; padding: 15px 20px; border-radius: 0 6px 6px 0; }}
-        </style>
-    </head>
-    <body>{html_body}</body>
-    </html>"""
-    
-    with open(html_output_path, "w", encoding="utf-8") as f:
-        f.write(html_template)
-    print(f"[OK] Saved Clinical HTML Report to: {html_output_path}")
-
-    return report_md
-'''
 
 def merge_short_other_segments(segments, min_other_len=2):
     if not segments:
@@ -1686,43 +1567,7 @@ def plot_epigenetic_waterfall(df_reads, gene_symbol, sample_id, out_dir):
     plt.close()
     return filename
 
-'''
-def plot_epigenetic_joint_map(df_reads, peaks_summary, gene_symbol, sample_id, out_dir):
-    if df_reads is None or df_reads.empty or peaks_summary is None or len(peaks_summary) < 2:
-        return None
-        
-    df_plot = df_reads.copy()
-    if "Meth_Combined" not in df_plot.columns:
-        df_plot["Meth_Combined"] = df_plot.get("Meth_5mC", 0) + df_plot.get("Meth_5hmC", 0)
-        
-    means = [peaks_summary[0]["Mean"], peaks_summary[1]["Mean"]]
-    df_plot['Allele'] = df_plot['Length_bp'].apply(lambda x: f"Allele {np.argmin([abs(x - m) for m in means]) + 1}")
-    
-    plt.figure(figsize=(8, 6))
-    g = sns.jointplot(
-        data=df_plot, x="Length_bp", y="Meth_Combined", hue="Allele",
-        kind="scatter", palette={"Allele 1": "#0072B2", "Allele 2": "#E69F00"},
-        alpha=0.6, s=50, marginal_kws=dict(fill=True, common_norm=False)
-    )
-    if (df_plot.empty or df_plot["Length_bp"].nunique() < 2 or df_plot["Meth_Combined"].nunique() < 2):
-        print("⚠️ Insufficient variability for KDE")
-        return None
-    sns.kdeplot(
-        data=df_plot, x="Length_bp", y="Meth_Combined", hue="Allele", 
-        ax=g.ax_joint, alpha=0.3, levels=4, palette={"Allele 1": "#0072B2", "Allele 2": "#E69F00"},
-        warn_singular=False
-    )
-    
-    g.ax_joint.set_xlabel("Read Length (bp)", fontweight='bold')
-    g.ax_joint.set_ylabel("Total Methylation", fontweight='bold')
-    g.fig.suptitle(f"Epigenetic Topography: {gene_symbol} (Sample: {sample_id})", y=1.02, fontweight='bold', fontsize=11)
-    
-    filename = f"EPIGENETIC_JOINT_MAP_{sample_id}_{gene_symbol}.png"
-    plot_path = os.path.join(out_dir, filename)
-    plt.savefig(plot_path, dpi=200, bbox_inches='tight')
-    plt.close()
-    return filename
-    '''
+
 def plot_epigenetic_joint_map(df_reads, peaks_summary, gene_symbol, sample_id, out_dir):
     # 1. Controlli base sugli input
     if df_reads is None or df_reads.empty or peaks_summary is None or len(peaks_summary) < 2:
@@ -1743,7 +1588,7 @@ def plot_epigenetic_joint_map(df_reads, peaks_summary, gene_symbol, sample_id, o
     # Palette colori coerente
     palette = {"Allele 1": "#0072B2", "Allele 2": "#E69F00"}
 
-    # 3. Creazione del Jointplot (height controlla la dimensione, non usare plt.figure())
+    # 3. Jointplot
     g = sns.jointplot(
         data=df_plot, x="Length_bp", y="Meth_Combined", hue="Allele",
         kind="scatter", palette=palette,
@@ -1775,54 +1620,6 @@ def plot_epigenetic_joint_map(df_reads, peaks_summary, gene_symbol, sample_id, o
     
     return plot_path
 
-"""
-Report diagnostico unificato (Genetic Locus + Allele Profile GMM + Metilazione/Epigenetica).
-Sostituisce/unisce generate_advanced_diagnostic_report() e generate_clinical_report_with_structures().
-
-Dipendenze aggiuntive:
-    pip install playwright
-    playwright install chromium
-"""
-
-"""
-Report diagnostico unificato (Genetic Locus + Allele Profile GMM + Metilazione/Epigenetica).
-Sostituisce/unisce generate_advanced_diagnostic_report() e generate_clinical_report_with_structures().
-
-Stack di rendering (invariato rispetto al codice esistente):
-    weasyprint  -> HTML to PDF
-    PyMuPDF     -> PDF to immagine
-    Pillow      -> stitching multi-pagina per il PNG
-"""
-
-"""
-Report diagnostico unificato (Genetic Locus + Allele Profile GMM + Metilazione/Epigenetica).
-Sostituisce/unisce generate_advanced_diagnostic_report() e generate_clinical_report_with_structures().
-
-Stack di rendering (invariato rispetto al codice esistente):
-    weasyprint  -> HTML to PDF
-    PyMuPDF     -> PDF to immagine
-    Pillow/numpy -> stitching + rimozione spazio bianco in eccesso per il PNG
-"""
-
-"""
-Report diagnostico unificato (Genetic Locus + Allele Profile GMM + Metilazione/Epigenetica).
-Sostituisce/unisce generate_advanced_diagnostic_report() e generate_clinical_report_with_structures().
-
-Stack di rendering (invariato rispetto al codice esistente):
-    weasyprint  -> HTML to PDF
-    PyMuPDF     -> PDF to immagine
-    Pillow/numpy -> stitching + rimozione spazio bianco in eccesso per il PNG
-"""
-
-"""
-Report diagnostico unificato (Genetic Locus + Allele Profile GMM + Metilazione/Epigenetica).
-Sostituisce/unisce generate_advanced_diagnostic_report() e generate_clinical_report_with_structures().
-
-Stack di rendering (invariato rispetto al codice esistente):
-    weasyprint  -> HTML to PDF
-    PyMuPDF     -> PDF to immagine
-    Pillow/numpy -> stitching + rimozione spazio bianco in eccesso per il PNG
-"""
 
 import os
 import markdown
@@ -1838,13 +1635,7 @@ _PAGE_BG_COLOR = (251, 254, 255)  # #fbfeff
 
 
 def _trim_trailing_whitespace(img, bg_color=_PAGE_BG_COLOR, tolerance=10, padding=30):
-    """
-    Rimuove lo spazio bianco in eccesso in fondo all'immagine, dovuto al fatto che
-    la @page CSS viene dichiarata molto piu' alta del necessario (per evitare che
-    WeasyPrint spezzi il contenuto su piu' pagine A4, causa dei "buchi" bianchi
-    visti in precedenza). Individua l'ultima riga di pixel che si discosta dal
-    colore di sfondo e ritaglia li', lasciando un piccolo padding di sicurezza.
-    """
+
     arr = np.array(img.convert("RGB")).astype(int)
     diff = np.abs(arr - np.array(bg_color)).sum(axis=2)
     content_rows = np.where((diff > tolerance).any(axis=1))[0]
@@ -1858,19 +1649,7 @@ def _trim_trailing_whitespace(img, bg_color=_PAGE_BG_COLOR, tolerance=10, paddin
 
 
 def _save_html_as_png(html_content, output_png_path, dpi=150):
-    """
-    Renderizza l'HTML in PDF tramite WeasyPrint e lo converte in PNG usando PyMuPDF.
 
-    Fix applicati rispetto alla versione originale:
-      1. Si renderizzano TUTTE le pagine del PDF (non solo la prima), cosi' non
-         viene perso contenuto se il report supera una pagina.
-      2. La @page CSS nel template e' dichiarata larga e molto alta, cosi' nella
-         stragrande maggioranza dei casi tutto il contenuto sta su una sola
-         "pagina" logica e non ci sono piu' salti pagina con relativo spazio
-         bianco a meta' documento.
-      3. Lo spazio bianco finale in eccesso (dovuto all'altezza pagina
-         sovradimensionata "per sicurezza") viene ritagliato automaticamente.
-    """
     try:
         pdf_bytes = HTML(string=html_content).write_pdf()
         doc = fitz.open(stream=pdf_bytes, filetype="pdf")
@@ -1918,7 +1697,6 @@ def complementary_reverse(seq):
 
 
 def _save_html_as_pdf(html_content, output_pdf_path):
-    """Salva l'HTML come PDF (multi-pagina, nativo) tramite WeasyPrint."""
     try:
         HTML(string=html_content).write_pdf(output_pdf_path)
         print(f"[OK] Saved PDF Report to: {output_pdf_path}")
@@ -1927,15 +1705,7 @@ def _save_html_as_pdf(html_content, output_pdf_path):
 
 
 def _assign_reads_to_nearest_allele(df_reads, peaks_summary):
-    """
-    Assegna ciascuna read all'allele (picco GMM) con Mean piu' vicina in lunghezza
-    (nearest-mean assignment), coerentemente su tutto il report (coverage in
-    tabella + Differential Methylation Analysis), invece di fidarsi dei soli
-    campi 'count'/'percentage' eventualmente gia' presenti in peaks_summary.
 
-    Ritorna una copia di df_reads con una colonna 'Allele_Assigned' (1-based,
-    stesso ordine di peaks_summary), oppure None se mancano i dati necessari.
-    """
     if df_reads is None or df_reads.empty or not peaks_summary or "Length_bp" not in df_reads.columns:
         return None
 
@@ -1948,15 +1718,7 @@ def _assign_reads_to_nearest_allele(df_reads, peaks_summary):
 
 
 def analyze_differential_methylation(df_reads, peaks_summary):
-    """
-    Sezione 4 - Differential Methylation Analysis (DMA).
 
-    Valuta se il livello di metilazione totale (Meth_Combined) e' distribuito in
-    modo omogeneo tra gli alleli risolti dalla GMM. Ogni read viene assegnata
-    all'allele con Mean piu' vicina (nearest-mean assignment); il confronto tra
-    l'allele piu' corto (Normal/Short) e quello piu' lungo (Expanded/Long) viene
-    fatto con un Mann-Whitney U test a due code.
-    """
     section_md = "\n---\n\n## 4. Differential Methylation Analysis (DMA)\n"
     section_md += (
         "Evaluates whether total epigenetic modifications (`Meth_Combined`) are "
@@ -2042,25 +1804,7 @@ def generate_full_diagnostic_report(
     page_width_px=1150,
     page_height_px=6000,
 ):
-    """
-    Report unico che unisce:
-      1. Genetic Locus Overview
-      2. Allele Profile (GMM): lunghezza, std dev, repeats, formula strutturale,
-         flag patogenico, coverage per allele
-      3. Caratterizzazione della metilazione + considerazioni epigenetiche
-      4. Salvataggio in HTML + PNG (una sola immagine, non tagliata) + PDF
 
-    Parametri
-    ---------
-    database : dict opzionale. Se None, usa la STR_REFERENCE_DB globale
-               (deve essere definita/importata nello scope del chiamante).
-    page_width_px, page_height_px : dimensioni (in CSS px) della @page usata per
-               il rendering PDF->PNG. Valori generosi rispetto al contenuto reale
-               evitano sia il taglio orizzontale delle tabelle sia lo split forzato
-               su piu' pagine; lo spazio bianco in eccesso viene ritagliato in
-               automatico. Se un report e' insolitamente lungo (molte alleli/righe)
-               e nel log compare "N pagina/e" con N>1, aumentare page_height_px.
-    """
     allele_formulas = allele_formulas or {}
 
     ref_db = database if database is not None else STR_REFERENCE_DB  # noqa: F821
@@ -2156,7 +1900,7 @@ def generate_full_diagnostic_report(
             f"**{rep_units}** | `{formula}` | {coverage_str} | {status} |\n"
         )
 
-    # ---------- 3. Metilazione + considerazioni epigenetiche ----------
+    # ---------- 3. Methylation----------
     has_reads = df_reads is not None and not df_reads.empty
     m5mic = df_reads["Meth_5mC"].mean() if (has_reads and "Meth_5mC" in df_reads.columns) else 0.0
     m5hmic = df_reads["Meth_5hmC"].mean() if (has_reads and "Meth_5hmC" in df_reads.columns) else 0.0
