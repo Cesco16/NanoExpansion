@@ -1,4 +1,4 @@
-name: NanoExp2
+name: NanoExpansion
 channels:
   - bioconda
 dependencies:
