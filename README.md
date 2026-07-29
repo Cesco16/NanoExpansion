@@ -189,7 +189,7 @@ For each run, the following files are generated in `--outdir`:
 <img src="example_output/EPIGENETIC_JOINT_MAP_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 </div>
 
-- `FULL_REPORT_<sample>_<gene>.html` — NanoExpansion report with GMM alleles and methylation (5mC/5hmC) profile.
+- `FULL_REPORT_<sample>_<gene>.html/.png/.pdf` — NanoExpansion report with GMM alleles and methylation (5mC/5hmC) profile.
 
 <div align="center">
 <img src="example_output/FULL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
