@@ -91,7 +91,7 @@ samtools index sample_str_regions.bam
 ## Quick start
 
 ```bash
-python main.py \
+python ./scripts/main.py \
   --bam sample_str_regions.bam \
   --fasta ref.fa \
   --gene <gene> \
@@ -102,7 +102,7 @@ python main.py \
 For a locus not present in the built-in database, or to use a different assembly, coordinates can be specified manually:
 
 ```bash
-python main.py \
+python ./scripts/main.py \
   --bam sample_str_regions.bam \
   --fasta custom_reference.fa \
   --gene MY_LOCUS \
@@ -110,6 +110,17 @@ python main.py \
   --motif CAG --strand forward \
   --sample sample01 \
   --outdir output/sample01/
+```
+
+For testing NanoExpansion on benchmark files:
+
+```bash
+python ./scripts/main.py \
+  --bam ./benchmark/output_<sampleID>/nanoexpansion/nativeoutput_<sampleID>_roi.bam \
+  --fasta ref.fa \
+  --gene BENCHMARK \
+  --sample <sampleID> \
+  --outdir ./output/<sampleID>/nanoexpansion/
 ```
 
 ## Command-line options
