@@ -169,7 +169,7 @@ Benchmark examples must be run using BENCHMARK as gene locus (and adjusting the 
 
 For each run, the following files are generated in `--outdir` (here an example diagnosed with DM1 is reported):
 
-- `<sample>_<gene>_summary.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
+- `<sampleID>_<gene>_summary.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
 - `Read_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified read.
 
 <div align="center">
@@ -179,32 +179,32 @@ For each run, the following files are generated in `--outdir` (here an example d
 <img src="example_output/mutated.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
-- `sequential_locus_structure.png` — unified colored linear block maps for all the reads (with all possible inserted motifs).
+- `sequential_locus_structure_<sampleID>.png` — unified colored linear block maps for all the reads (with all possible inserted motifs).
 
 <div align="center">
 <img src="example_output/sequential_locus_structure_NG9409.png" alt="Descrizione dell'immagine" width="1000" />
 </div>
 
 
-- `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
+- `gmm_dual_methylation_<sampleID>.png` — length distribution with GMM peaks and, when available, methylation profile.
 
 <div align="center">
 <img src="example_output/gmm_dual_methylation_NG9409.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
-- `EPIGENETIC_WATERFALL_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
+- `EPIGENETIC_WATERFALL_<sampleID>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
   
 <div align="center">
 <img src="example_output/EPIGENETIC_WATERFALL_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
-- `EPIGENETIC_JOINT_MAP_<sample>_<gene>.png` — joint epigenetic plot (methylation and allele joint distributions).
+- `EPIGENETIC_JOINT_MAP_<sampleID>_<gene>.png` — joint epigenetic plot (methylation and allele joint distributions).
 
 <div align="center">
 <img src="example_output/EPIGENETIC_JOINT_MAP_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 </div>
 
-- `FULL_REPORT_<sample>_<gene>.html/.png/.pdf` — NanoExpansion report with GMM alleles and methylation (5mC/5hmC) profile.
+- `FULL_REPORT_<sampleID>_<gene>.html/.png/.pdf` — NanoExpansion report with GMM alleles and methylation (5mC/5hmC) profile.
 
 <div align="center">
 <img src="example_output/FULL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
