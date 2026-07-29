@@ -29,10 +29,9 @@ NanoExpansion is a Python pipeline that, starting from a BAM alignment and a ref
 
 - **Robust extraction of the repeat region** from aligned reads, anchored via approximate alignment (edit distance, using `edlib`) of the flanking sequences, gracefully handling reads truncated upstream or downstream of the locus.
 - **Allele number and length estimation** via Gaussian Mixture Model (GMM) fitting on the observed length distribution, with an automatic fallback for low-coverage samples.
-- **Somatic mosaicism index** computed from the identified alleles.
 - **Alternative motif/k-mer profiling** across the locus, useful for detecting recurrent repeat interruptions (e.g. *interrupted* vs *pure* alleles in *DMPK*/*C9orf72*).
 - **Anatomical structural segmentation** of each read into `Repeat` / `Interruption` / `Other` blocks, with automatic generation of the allele's synthetic clinical formula.
-- **Markdown/HTML diagnostic reports** ready to share, with automatic normal/pathogenic classification based on the reference database thresholds.
+- **NanoExpansion reports** ready to share, with automatic normal/pathogenic classification based on the reference database thresholds.
 - **Publication-ready plots** colored linear block map for each identified allele, length distribution with GMM peaks, methylation (5mC/5hmC) waterfall plot, and methylation joint plot when available in the BAM tags.
 - **Built-in pathogenic STR loci database** (inspired by [STRchive](https://strchive.org/)), easily extendable to new genes/loci.
 
