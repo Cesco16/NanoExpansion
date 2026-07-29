@@ -40,11 +40,11 @@ NanoExpansion is a Python pipeline that, starting from a BAM alignment and a ref
 
 The pipeline (`main.py`) runs the following steps in sequence:
 
-1. **Read extraction** (`analyze_target_locus`): for every read covering the target locus in the BAM file, the reference flanking sequences (left/right flank) are aligned against the read with `edlib` to isolate the portion of sequence corresponding to the repeat region, computing its length and motif purity.
-2. **Population statistics** (`calculate_mosaicism`, `fit_best_gmm`): computes the somatic mosaicism index and estimates the number of alleles (GMM components) present in the length distribution.
-3. **Motif profiling** (`profile_alternative_motifs`, `detect_most_frequent_interrupt`): identifies the most frequent k-mers at the locus, including any recurrent interruptions.
-4. **Structural segmentation** (`build_complete_str_structures`, `parse_str_structure_string`): breaks down each read into typed blocks (Repeat/Interruption/Other) and derives a synthetic clinical formula (e.g. `(CAG)45(CAA)2(CAG)3`).
-5. **Reporting and plotting** (`generate_advanced_diagnostic_report`, `generate_clinical_report_with_structures`, `plot_gmm_and_dual_methylation`, `plot_sequential_locus_structure`, `draw_dna_gene`): generates clinical reports and diagnostic plots, plus a text file listing the structural formula of every read in the cohort.
+1. **Read extraction**: for every read covering the target locus in the BAM file, the reference flanking sequences (left/right flank) are aligned against the read with `edlib` to isolate the portion of sequence corresponding to the repeat region, computing its length and motif purity.
+2. **Population statistics**: computes the somatic mosaicism index and estimates the number of alleles (GMM components) present in the length distribution.
+3. **Motif profiling**: identifies the most frequent k-mers at the locus, including any recurrent interruptions.
+4. **Structural segmentation**: breaks down each read into typed blocks (Repeat/Interruption/Other) and derives a synthetic clinical formula (e.g. `(CAG)45(CAA)2(CAG)3`).
+5. **Reporting and plotting**: generates clinical reports and diagnostic plots, plus a text file listing the structural formula of every read in the cohort.
 
 All functions are defined in [`utils.py`](utils.py); pipeline orchestration and the command-line interface live in [`main.py`](main.py).
 
