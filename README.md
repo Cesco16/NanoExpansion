@@ -147,13 +147,13 @@ For each run, the following files are generated in `--outdir`:
 - `ADVANCED_REPORT_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
 
 <div align="center">
-<img src="example_output/ADVANCED_REPORT_13204_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/ADVANCED_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `CLINICAL_REPORT_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
 
 <div align="center">
-<img src="example_output/CLINICAL_REPORT_13204_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/CLINICAL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
@@ -182,13 +182,13 @@ For each run, the following files are generated in `--outdir`:
 - `EPIGENETIC_WATERFALL_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
   
 <div align="center">
-<img src="example_output/EPIGENETIC_WATERFALL_13204_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/EPIGENETIC_WATERFALL_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `EPIGENETIC_JOINT_MAP_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
 
 <div align="center">
-<img src="example_output/EPIGENETIC_JOINT_MAP_13204_DMPK.png" alt="Descrizione dell'immagine" width="500" />
+<img src="example_output/EPIGENETIC_JOINT_MAP_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 </div>
 
 ## Repository structure
