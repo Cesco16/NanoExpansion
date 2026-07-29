@@ -1,7 +1,9 @@
 name: NanoExpansion
 channels:
   - bioconda
+  - conda-forge
 dependencies:
+  - python==3.12
   - samtools
   - pysam
   - numpy
