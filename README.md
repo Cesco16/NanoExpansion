@@ -4,7 +4,7 @@
 
 **Characterization of pathogenic short tandem repeat (STR) expansions from Oxford Nanopore long-read sequencing data.**
 
-NanoExpansion is a Python pipeline that, starting from a BAM alignment and a reference genome, measures the length and internal structure (repeat motif, interruptions, somatic mosaicism) of clinically relevant STR loci (e.g. *C9orf72*, *DMPK*, *HTT*, *RFC1*, ...), producing diagnostic reports, synthetic clinical formulas (e.g. `(CAG)20(CAA)2`) and publication-ready plots.
+NanoExpansion is a Python pipeline that, starting from a BAM alignment and a reference genome, measures the length and internal structure (repeat motif, interruptions, somatic mosaicism) of clinically relevant STR loci (e.g. *C9orf72*, *DMPK*, *HTT*, *RFC1*, ...), producing reports, synthetic clinical formulas (e.g. `(CAG)20(CAA)2`) and publication-ready plots.
 
 ---
 
