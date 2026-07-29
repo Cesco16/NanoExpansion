@@ -79,11 +79,22 @@ conda activate NanoExpansion
 
 > The tool is currently run directly from source; no Bioconda/PyPI distribution is provided yet.
 
+
+## BAM preprocessing
+
+It could be convenient filtering the BAM file by selecting only the regions of interest to speed up NanoExpansion execution:
+
+```bash
+samtools view -b -h -o sample_str_regions.bam -L <gene>_filter.bed sample.bam -@ 32
+samtools index sample_str_regions.bam
+
+```
+
 ## Quick start
 
 ```bash
 python main.py \
-  --bam sample.bam \
+  --bam sample_str_regions.bam \
   --fasta hg38.fa \
   --gene DMPK \
   --sample 13204 \
@@ -94,7 +105,7 @@ For a locus not present in the built-in database, or to use a different assembly
 
 ```bash
 python main.py \
-  --bam sample.bam \
+  --bam sample_str_regions.bam \
   --fasta custom_reference.fa \
   --gene MY_LOCUS \
   --chrom chr1 --start 1000000 --end 1000060 \
