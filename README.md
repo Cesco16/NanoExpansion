@@ -155,7 +155,7 @@ Benchmark examples must be run using BENCHMARK as gene locus (and adjusting the 
 For each run, the following files are generated in `--outdir`:
 
 - `<sample>_<gene>.txt` — text file listing the structural formula (e.g. `(CAG)45(CAA)2`) of every read in the cohort.
-- `<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified allele.
+- `Read_<read_id>_<gene>.png/.svg` — colored linear block map of the structure of each identified read.
 
 <div align="center">
 <img src="example_output/wildtype.png" alt="Descrizione dell'immagine" width="700" />
@@ -164,7 +164,7 @@ For each run, the following files are generated in `--outdir`:
 <img src="example_output/mutated.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
-- `sequential_locus_structure.png` — length distribution with GMM peaks and, when available, methylation profile.
+- `sequential_locus_structure.png` — unified colored linear block maps for all the reads (with all possible inserted motifs).
 
 <div align="center">
 <img src="example_output/sequential_locus_structure.png" alt="Descrizione dell'immagine" width="1000" />
@@ -183,13 +183,13 @@ For each run, the following files are generated in `--outdir`:
 <img src="example_output/EPIGENETIC_WATERFALL_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
-- `EPIGENETIC_JOINT_MAP_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
+- `EPIGENETIC_JOINT_MAP_<sample>_<gene>.png` — joint epigenetic plot (methylation and allele joint distributions).
 
 <div align="center">
 <img src="example_output/EPIGENETIC_JOINT_MAP_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 </div>
 
-- `FULL_REPORT_<sample>_<gene>.html` — diagnostic report with GMM alleles and methylation (5mC/5hmC) profile.
+- `FULL_REPORT_<sample>_<gene>.html` — NanoExpansion report with GMM alleles and methylation (5mC/5hmC) profile.
 
 <div align="center">
 <img src="example_output/FULL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
