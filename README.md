@@ -222,7 +222,7 @@ For each run, the following files are generated in `--outdir`:
 
 ## Disclaimer
 
-- NanoExpansion is currently under active development. Several features are still being refined, and functionality will be expanded in future updates (e.g., simultaneous analysis across multiple loci, known pathogenic loci addition to the STR database).
+- NanoExpansion is currently under active development. Several features are still being refined, and functionality will be expanded in future updates (e.g., simultaneous analysis across multiple loci, known pathogenic loci addition to the STR database, etc.).
 
 - NanoExpansion is not intended for diagnostic purposes. The information generated is designed to support specialists in their work and should not be used as a standalone diagnostic solution.
 
