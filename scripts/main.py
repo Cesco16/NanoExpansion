@@ -2,7 +2,7 @@
 """
 main.py
 =======
-NanoExpansion (NanoExp3) - Command-line pipeline for characterization
+NanoExpansion (NanoExp) - Command-line pipeline for characterization
 of short tandem repeat (STR) expansions from nanopore (long-read) data.
 
 Given an aligned BAM file and a FASTA reference, the pipeline:
@@ -19,8 +19,8 @@ Given an aligned BAM file and a FASTA reference, the pipeline:
      along with a summary text file for the entire read cohort.
 
 Typical Usage:
-    python main.py --bam sample.bam --fasta hg38.fa --gene DMPK \
-        --sample 13204 --outdir output/13204/nanoexpansion/
+    python main.py --bam sample_str_regions.bam --fasta ref.fa --gene <gene> \
+        --sample <sampleID> --outdir output/<sampleID>/nanoexpansion/
 
 For the full list of supported genes out of the box, see
 utils.STR_REFERENCE_DB (extendable by adding new entries to the dictionary).
