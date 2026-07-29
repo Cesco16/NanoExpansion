@@ -112,7 +112,7 @@ python ./scripts/main.py \
   --outdir output/sample01/
 ```
 
-For testing NanoExpansion on benchmark files:
+For testing NanoExpansion on benchmark files (and adjusting the --filt, --min-other-len, and --hysteresis parameters accordingly) :
 
 ```bash
 python ./scripts/main.py \
