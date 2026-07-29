@@ -192,7 +192,7 @@ For each run, the following files are generated in `--outdir`:
 - `FULL_REPORT_<sample>_<gene>.html` — diagnostic report with GMM alleles and methylation (5mC/5hmC) profile.
 
 <div align="center">
-<img src="example_output/FULL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/FULL_REPOR_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 
