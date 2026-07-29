@@ -216,13 +216,8 @@ def main():
     # --- 4. Length/Methylation Summary Plot --------------------------------
     plot_gmm_and_dual_methylation(df_results, gmm_model, peaks_summary, chrom, start, end, args.outdir)
 
-    # --- 5. Markdown Advanced Diagnostic Report ----------------------------
-    advanced_report = generate_advanced_diagnostic_report(
-        gene_key, df_results, peaks_summary, global_counts, sample_id=args.sample, path=args.outdir
-    )
-    print(advanced_report)
 
-    # --- 6. Structural Read Segmentation ----------------------------------
+    # --- 5. Structural Read Segmentation ----------------------------------
     rep_length = len(motif)
 
     if isinstance(interrupt_motif, (list, tuple)):
@@ -257,7 +252,7 @@ def main():
         else:
             peaks_summary = []
 
-    # --- 7. Clinical Formula and Linear Map for each Allele ---------------
+    # --- 6. Clinical Formula and Linear Map for each Allele ---------------
     allele_formulas_for_report = {}
     
     # Palette definition for draw_dna_gene
@@ -369,17 +364,8 @@ def main():
             text_file.write(line)
     print(f"\nSummary text file successfully saved to: {txt_file_path}")
 
-    # --- 9. Clinical Report & Sequential Structure Plot --------------------
-    generate_clinical_report_with_structures(
-        gene_symbol=gene_key,
-        df_reads=df_results,
-        peaks_summary=peaks_summary,
-        allele_formulas=allele_formulas_for_report,
-        sample_id=args.sample,
-        path=args.outdir,
-        database=STR_REFERENCE_DB,
-    )
-
+    # --- 9. Sequential Structure Plot --------------------
+  
     plot_sequential_locus_structure(df_results, motif, args.outdir, interrupt_motif=interrupt_motif, strand=strand)
 
     print(f"\nAnalysis complete. Outputs available in: {args.outdir}")
