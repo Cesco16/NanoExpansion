@@ -214,7 +214,7 @@ def main():
         print(f"Motif: {motif_found} | Total count: {count} | Percentage: {percentage:.2f}% ({status})")
 
     # --- 4. Length/Methylation Summary Plot --------------------------------
-    plot_gmm_and_dual_methylation(df_results, gmm_model, peaks_summary, chrom, start, end, args.outdir)
+    plot_gmm_and_dual_methylation(df_results, gmm_model, peaks_summary, chrom, start, end, args.outdir, sample_id=args.sample)
 
 
     # --- 5. Structural Read Segmentation ----------------------------------
@@ -366,7 +366,7 @@ def main():
 
     # --- 9. Sequential Structure Plot --------------------
   
-    plot_sequential_locus_structure(df_results, motif, args.outdir, interrupt_motif=interrupt_motif, strand=strand)
+    plot_sequential_locus_structure(df_results, motif, args.outdir, sample_id=args.sample, interrupt_motif=interrupt_motif, strand=strand)
 
     print(f"\nAnalysis complete. Outputs available in: {args.outdir}")
 
