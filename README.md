@@ -182,14 +182,14 @@ For each run, the following files are generated in `--outdir` (here an example d
 - `sequential_locus_structure.png` — unified colored linear block maps for all the reads (with all possible inserted motifs).
 
 <div align="center">
-<img src="example_output/sequential_locus_structure.png" alt="Descrizione dell'immagine" width="1000" />
+<img src="example_output/sequential_locus_structure_NG9409.png" alt="Descrizione dell'immagine" width="1000" />
 </div>
 
 
 - `gmm_dual_methylation.png` — length distribution with GMM peaks and, when available, methylation profile.
 
 <div align="center">
-<img src="example_output/gmm_dual_methylation.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/gmm_dual_methylation_NG9409.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `EPIGENETIC_WATERFALL_<sample>_<gene>.png` — per-allele methylation waterfall plot (if the BAM contains base-modification tags).
