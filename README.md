@@ -97,8 +97,8 @@ python main.py \
   --bam sample_str_regions.bam \
   --fasta hg38.fa \
   --gene DMPK \
-  --sample 13204 \
-  --outdir output/13204/nanoexpansion/
+  --sample <sampleID> \
+  --outdir output/<sampleID>/nanoexpansion/
 ```
 
 For a locus not present in the built-in database, or to use a different assembly, coordinates can be specified manually:
