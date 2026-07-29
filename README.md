@@ -88,8 +88,8 @@ conda activate NanoExpansion
 It could be convenient filtering the BAM file by selecting only the regions of interest to speed up NanoExpansion execution:
 
 ```bash
-samtools view -b -h -o sample_str_regions.bam -L <gene>_filter.bed sample.bam -@ 32
-samtools index sample_str_regions.bam
+samtools view -b -h -o <sampleID>_str_regions.bam -L <gene>_filter.bed <sampleID>.bam -@ 32
+samtools index <sampleID>_str_regions.bam
 
 ```
 
@@ -97,7 +97,7 @@ samtools index sample_str_regions.bam
 
 ```bash
 python ./scripts/main.py \
-  --bam sample_str_regions.bam \
+  --bam <sampleID>_str_regions.bam \
   --fasta ref.fa \
   --gene <gene> \
   --sample <sampleID> \
@@ -108,13 +108,13 @@ For a locus not present in the built-in database, or to use a different assembly
 
 ```bash
 python ./scripts/main.py \
-  --bam sample_str_regions.bam \
-  --fasta custom_reference.fa \
-  --gene MY_LOCUS \
+  --bam <sampleID>_str_regions.bam \
+  --fasta ref.fa \
+  --gene <MY_LOCUS> \
   --chrom chr1 --start 1000000 --end 1000060 \
   --motif CAG --strand forward \
-  --sample sample01 \
-  --outdir output/sample01/
+  --sample <sampleID> \
+  --outdir output/<sampleID>/
 ```
 
 For testing NanoExpansion on benchmark files (adjusting the --filt, --min-other-len, and --hysteresis parameters accordingly) :
