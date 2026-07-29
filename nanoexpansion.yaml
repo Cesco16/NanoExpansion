@@ -13,9 +13,9 @@ dependencies:
   - seaborn
   - bokeh
   - scikit-learn
-  - markdown
+  - weasyprint
   - pip:
+    - markdown
     - edlib
-    - weasyprint
     - pdf2image
     - pymupdf
