@@ -46,7 +46,7 @@ The pipeline (`main.py`) runs the following steps in sequence:
 4. **Structural segmentation**: breaks down each read into typed blocks (Repeat/Interruption/Other) and derives a synthetic clinical formula (e.g. `(CAG)45(CAA)2(CAG)3`).
 5. **Reporting and plotting**: generates clinical reports and diagnostic plots, plus a text file listing the structural formula of every read in the cohort.
 
-All functions are defined in [`utils.py`](utils.py); pipeline orchestration and the command-line interface live in [`main.py`](main.py).
+All functions are defined in [`utils.py`](utils.py); pipeline orchestration and the command-line interface are in [`main.py`](main.py).
 
 ## Requirements
 
