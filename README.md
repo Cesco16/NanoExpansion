@@ -149,6 +149,7 @@ The built-in reference database (`utils.STR_REFERENCE_DB`, inspired by [STRchive
 | `ATXN3` | SCA3 | CTG | Autosomal Dominant |
 
 New loci can be added by extending the `STR_REFERENCE_DB` dictionary in `utils.py`, or passed at runtime via `--chrom/--start/--end/--motif/--strand`.
+Benchmark examples must be run using BENCHMARK as gene locus (and adjusting the --filt, --min-other-len, and --hysteresis parameters accordingly).
 
 ## Output
 
