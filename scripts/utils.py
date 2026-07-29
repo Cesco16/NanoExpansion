@@ -530,12 +530,11 @@ def plot_sequential_locus_structure(
         all_int_motifs = []
 
     palette = [
-        "#009E73",
-        "#CC79A7",
-        "#D55E00",
-        "#F0E442",
-        "#56B4E9",
-        "#E69F00",
+    "#009E73", "#CC79A7", "#D55E00", "#F0E442", "#56B4E9",
+    "#E69F00", "#0072B2", "#999999", "#332288", "#88CCEE",
+    "#44AA99", "#117733", "#999933", "#DDCC77", "#CC6677",
+    "#882255", "#AA4499", "#661100", "#6699CC", "#AA4466",
+    "#4477AA", "#228833", "#EE6677", "#BBBBBB"
     ]
     int_color_map = {}
     for idx, m in enumerate(all_int_motifs):
