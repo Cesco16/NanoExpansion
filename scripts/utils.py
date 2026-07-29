@@ -107,10 +107,10 @@ STR_REFERENCE_DB = {
         "Inheritance": "Autosomal Dominant",
         "Motif_Ref": "AAAAT",
         "Strand": "forward",
-        "Normal_Max_Repeats": 30,
-        "Pathogenic_Min_Repeats": 31,
+        "Normal_Max_Repeats": 100,
+        "Pathogenic_Min_Repeats": 110,
         "Coordinates_hg38": "chr16:66490396-66490466",
-        "Coordinates_T2T": "chr1:57245935-57245973",
+        "Coordinates_T2T": "chr16:72284666-72284761",
         "Epigenetic_Target": False
     },
     "DAB1": {
@@ -118,10 +118,10 @@ STR_REFERENCE_DB = {
         "Inheritance": "Autosomal Dominant",
         "Motif_Ref": "AAAAT",
         "Strand": "reverse",
-        "Normal_Max_Repeats": 20,
-        "Pathogenic_Min_Repeats": 50,
+        "Normal_Max_Repeats": 30,
+        "Pathogenic_Min_Repeats": 31,
         "Coordinates_hg38": "chr1:57367024-57367124",
-        "Coordinates_T2T": "",
+        "Coordinates_T2T": "chr1:57245935-57245973",
         "Epigenetic_Target": False
     },
     "AR": {
