@@ -95,8 +95,8 @@ samtools index sample_str_regions.bam
 ```bash
 python main.py \
   --bam sample_str_regions.bam \
-  --fasta hg38.fa \
-  --gene DMPK \
+  --fasta ref.fa \
+  --gene <gene> \
   --sample <sampleID> \
   --outdir output/<sampleID>/nanoexpansion/
 ```
