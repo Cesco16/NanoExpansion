@@ -163,7 +163,7 @@ For each run, the following files are generated in `--outdir`:
 <img src="example_output/wildtype.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 <div align="center">
-<img src="example_output/expanded.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/mutated.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 - `sequential_locus_structure.png` — length distribution with GMM peaks and, when available, methylation profile.
