@@ -77,8 +77,6 @@ conda activate NanoExpansion
 
 ```
 
-> The tool is currently run directly from source; no Bioconda/PyPI distribution is provided yet.
-
 
 ## BAM preprocessing
 
