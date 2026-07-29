@@ -420,93 +420,13 @@ def complementary_reverse(seq):
     pairs = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C', 'N': 'N'}
     return "".join(pairs.get(base, base) for base in reversed(seq))
 
-'''
-def plot_sequential_locus_structure(df, repeat_motif, path, interrupt_motif=None, max_error=1):
-    """
-    Generates a horizontal broken bar plot showing internal locus structure per read.
-    Assigns individual unique colors to each interruption motif found.
-    """
-    complete_STR, read_ids = build_complete_str_structures(df, repeat_motif, interrupt_motif, max_error)
-    
-    num_reads = len(read_ids)
-    fig, ax = plt.subplots(figsize=(14, max(num_reads * 0.4, 6)))
-    
-    # Process interruption motifs to build dynamic color mappings
-    if isinstance(interrupt_motif, (list, tuple)):
-        all_int_motifs = [m for m in interrupt_motif if m]
-    elif interrupt_motif:
-        all_int_motifs = [interrupt_motif]
-    else:
-        all_int_motifs = []
-
-    palette = ["#009E73", "#CC79A7", "#D55E00", "#F0E442", "#56B4E9", "#E69F00"]
-    int_color_map = {}
-    for idx, m in enumerate(all_int_motifs):
-        int_color_map[m] = palette[idx % len(palette)]
-
-    color_map = {
-        "Repeat": "#0072B2",                  # Standard Blue
-        "Other": "#4D4D4D",                   # Dark Grey
-        "Truncated_Repeat": "#E69F00",         # Dark Orange
-        "Truncated_Other": "#999999"           # Light Grey
-    }
-    
-    for y_idx, segments in enumerate(complete_STR):
-        current_pos = 0
-        for motif_str, length, seg_type in segments:
-            if length == 0:
-                continue
-                
-            if "Interruption" in seg_type:
-                color = int_color_map.get(motif_str, "#009E73")
-            else:
-                color = color_map.get(seg_type, color_map["Other"])
-            
-            ax.broken_barh(
-                [(current_pos, length)], 
-                (y_idx - 0.35, 0.7), 
-                facecolors=color,
-                edgecolor='black', 
-                linewidth=0.3
-            )
-            current_pos += length
-            
-    ax.set_yticks(range(num_reads))
-    ax.set_yticklabels(read_ids, fontsize=9, fontfamily='monospace')
-    ax.set_xlabel("Cumulative Locus Length (bp)", fontsize=11, fontweight='bold', labelpad=10)
-    ax.set_ylabel("Read ID", fontsize=11, fontweight='bold', labelpad=10)
-    ax.set_title(f"Sequential Locus Anatomy ({repeat_motif})", fontsize=14, fontweight='bold', pad=20)
-    
-    ax.xaxis.grid(True, linestyle='--', alpha=0.6, color='#CCCCCC')
-    ax.set_axisbelow(True)
-    
-    for spine in ["top", "right"]:
-        ax.spines[spine].set_visible(False)
-        
-    legend_elements = [
-        Patch(facecolor=color_map["Repeat"], edgecolor='black', linewidth=0.5, label=f'Repeat ({repeat_motif})'),
-    ]
-    
-    for m in all_int_motifs:
-        legend_elements.append(
-            Patch(facecolor=int_color_map[m], edgecolor='black', linewidth=0.5, label=f'Interruption ({m})')
-        )
-        
-    legend_elements.append(Patch(facecolor=color_map["Other"], edgecolor='black', linewidth=0.5, label='Flanking / Other DNA'))
-    
-    ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1.02, 1), borderaxespad=0, frameon=True, facecolor='#F9F9F9')
-    
-    plt.tight_layout()
-    plt.savefig(os.path.join(path, 'sequential_locus_structure.png'))
-    plt.close()
-'''
 
 def plot_sequential_locus_structure(
     df,
     repeat_motif,
     path,
     interrupt_motif=None,
-    max_error=1,
+    max_error=0.5, #beware this error that could be modified if needed
     strand="+",
 ):
     """Generates a horizontal broken bar plot showing internal locus structure per read.
