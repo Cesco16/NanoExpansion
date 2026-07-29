@@ -189,16 +189,10 @@ For each run, the following files are generated in `--outdir`:
 <img src="example_output/EPIGENETIC_JOINT_MAP_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="500" />
 </div>
 
-- `ADVANCED_REPORT_<sample>_<gene>.html` — diagnostic report with GMM allele profile and methylation (5mC/5hmC) profile.
+- `FULL_REPORT_<sample>_<gene>.html` — diagnostic report with GMM alleles and methylation (5mC/5hmC) profile.
 
 <div align="center">
-<img src="example_output/ADVANCED_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
-</div>
-
-- `CLINICAL_REPORT_<sample>_<gene>.html` — clinical report with allele structural formulas and normal/pathogenic classification.
-
-<div align="center">
-<img src="example_output/CLINICAL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
+<img src="example_output/FULL_REPORT_NG9409_DMPK.png" alt="Descrizione dell'immagine" width="700" />
 </div>
 
 
