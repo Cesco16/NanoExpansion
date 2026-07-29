@@ -425,6 +425,7 @@ def plot_sequential_locus_structure(
     df,
     repeat_motif,
     path,
+    sample_id,
     interrupt_motif=None,
     max_error=0.5, #beware this error that could be modified if needed
     strand="+",
@@ -556,10 +557,10 @@ def plot_sequential_locus_structure(
     )
 
     plt.tight_layout()
-    plt.savefig(os.path.join(path, "sequential_locus_structure.png"))
+    plt.savefig(os.path.join(path, f"sequential_locus_structure_{sample_id}.png"))
     plt.close()
 
-def plot_gmm_and_dual_methylation(df, gmm_model, peaks_summary, chrom, start, end, path):
+def plot_gmm_and_dual_methylation(df, gmm_model, peaks_summary, chrom, start, end, path, sample_id):
     if df.empty:
         print("Insufficient data: Empty DataFrame.")
         return
@@ -652,7 +653,7 @@ def plot_gmm_and_dual_methylation(df, gmm_model, peaks_summary, chrom, start, en
             
     sns.despine()
     plt.tight_layout()
-    plt.savefig(os.path.join(path, 'gmm_dual_methylation.png'))
+    plt.savefig(os.path.join(path, f'gmm_dual_methylation_{sample_id}.png'))
     plt.close()
 
 import os
