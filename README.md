@@ -213,9 +213,9 @@ For each run, the following files are generated in `--outdir`:
 
 ## Citation
 
-This project is licensed under the [MIT License](LICENSE).  
-You are free to use, modify, and distribute this software under the terms of the license.
+
 
 ## License
 
-*(Specify the chosen license, e.g. MIT, GPLv3.)*
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software under the terms of the license.
