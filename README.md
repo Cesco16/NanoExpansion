@@ -245,6 +245,23 @@ For each run, the following files are generated in `--outdir` (here an example d
 
 If you use NanoExpansion in your research or work, please cite our work:
 
+```
+@article{10.1093/nargab/lqag117,
+    author = {Morandi, Luca and Casadei, Francesco and De Fanti, Sara and Bonan, Luigi and Ravaioli, Francesco and Palombo, Flavia and Fiorentino, Alessia and de Pasqua, Silvia and Vacchiano, Veria and Avoni, Patrizia and Rizzo, Giovanni and Capellari, Sabina and Ruggeri, Edoardo and Donadio, Vincenzo and Castellani, Gastone and Bacalini, Maria Giulia and Lodi, Raffaele and Liguori, Rocco and Carelli, Valerio and Tonon, Caterina},
+    title = {Nanopore sequencing combined with adaptive sampling and NanoExpansion enables accurate characterization of repeat expansion disorders},
+    journal = {NAR Genomics and Bioinformatics},
+    volume = {8},
+    number = {4},
+    pages = {lqag117},
+    year = {2026},
+    month = {12},
+    issn = {2631-9268},
+    doi = {10.1093/nargab/lqag117},
+}
+```
+
+or
+
 Morandi L, Casadei F, et al. Nanopore sequencing combined with adaptive sampling and NanoExpansion enables accurate characterization of repeat expansion disorders. NAR Genom Bioinform 8, 4 (2026). https://doi.org/10.1093/nargab/lqag117.
 
 and the corresponding GitHub repository:
