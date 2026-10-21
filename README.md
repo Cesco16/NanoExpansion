@@ -243,7 +243,11 @@ For each run, the following files are generated in `--outdir` (here an example d
 
 ## Citation
 
-If you use NanoExpansion in your research or work, please cite the GitHub repository:
+If you use NanoExpansion in your research or work, please cite our work:
+
+Morandi L, Casadei F, et al. Nanopore sequencing combined with adaptive sampling and NanoExpansion enables accurate characterization of repeat expansion disorders. NAR Genom Bioinform 8, 4 (2026). https://doi.org/10.1093/nargab/lqag117.
+
+and the corresponding GitHub repository:
 
 ```
 @misc{NanoExpansion
